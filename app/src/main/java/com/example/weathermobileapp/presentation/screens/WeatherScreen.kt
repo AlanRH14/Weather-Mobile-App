@@ -23,13 +23,15 @@ fun WeatherScreen(
         modifier = modifier
             .fillMaxWidth()
             .padding(
-                top = VeryExtraLargePadding,
-                start = MediumPadding,
-                end = MediumPadding
+                vertical = VeryExtraLargePadding,
+                horizontal = MediumPadding,
             ),
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
-        WeatherHeaderImage(image = WeatherData.image ?: R.drawable.ic_couple)
+        WeatherHeaderImage(
+            modifier = Modifier.weight(1F),
+            image = WeatherData.image ?: R.drawable.ic_couple
+        )
 
         WeatherMoreInfo(info = WeatherData.info ?: WeatherInfoModel())
 
