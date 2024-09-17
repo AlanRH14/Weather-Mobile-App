@@ -12,8 +12,7 @@ import com.example.weathermobileapp.domain.models.WeatherInfoModel
 import com.example.weathermobileapp.presentation.widgets.WeatherHeaderImage
 import com.example.weathermobileapp.presentation.widgets.WeatherInfo
 import com.example.weathermobileapp.presentation.widgets.WeatherMoreInfo
-import com.example.weathermobileapp.ui.theme.MediumPadding
-import com.example.weathermobileapp.ui.theme.VeryExtraLargePadding
+import com.example.weathermobileapp.ui.theme.GenericPadding
 
 @Composable
 fun WeatherScreen(
@@ -22,10 +21,7 @@ fun WeatherScreen(
     Column(
         modifier = modifier
             .fillMaxWidth()
-            .padding(
-                vertical = VeryExtraLargePadding,
-                horizontal = MediumPadding,
-            ),
+            .padding(GenericPadding.ScreenPadding),
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         WeatherHeaderImage(
