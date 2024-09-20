@@ -71,6 +71,7 @@ dependencies {
     ksp(libs.hilt.android.compiler)
     implementation(libs.hilt.android)
     implementation(libs.retrofit)
+    implementation(libs.converter.moshi)
     implementation(libs.moshi)
     implementation(libs.room.android)
 }

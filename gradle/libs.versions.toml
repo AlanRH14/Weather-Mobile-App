@@ -5,14 +5,14 @@ coreKtx = "1.13.1"
 junit = "4.13.2"
 junitVersion = "1.2.1"
 espressoCore = "3.6.1"
-lifecycleRuntimeKtx = "2.8.5"
+lifecycleRuntimeKtx = "2.8.6"
 activityCompose = "1.9.2"
-composeBom = "2024.09.01"
+composeBom = "2024.09.02"
 kspVersion = "1.9.10-1.0.13"
 hiltVersion = "2.48.1"
 retrofitVersion = "2.9.0"
 moshiVersion = "1.14.0"
-roomVersion = "2.5.0"
+roomVersion = "2.6.1"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -32,6 +32,7 @@ androidx-material3 = { group = "androidx.compose.material3", name = "material3" 
 hilt-android-compiler = { group = "com.google.dagger", name = "hilt-android-compiler", version.ref = "hiltVersion" }
 hilt-android = { group = "com.google.dagger", name = "hilt-android", version.ref = "hiltVersion" }
 retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofitVersion"}
+converter-moshi = { module = "com.squareup.retrofit2:converter-moshi", name = "converter-moshi", version.ref = "retrofitVersion" }
 moshi = { group = "com.squareup.moshi", name = "moshi", version.ref = "moshiVersion"}
 room-android = { group = "androidx.room", name = "room-runtime", version.ref = "roomVersion"}
 
