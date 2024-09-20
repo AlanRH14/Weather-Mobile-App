@@ -11,7 +11,7 @@ sealed class WeatherType(
         icon = R.drawable.ic_thunder
     )
 
-    data object HeavyThunderstorm : WeatherType(
+    data object RainThunderstorm : WeatherType(
         icon = R.drawable.ic_rainythunder
     )
 
@@ -61,12 +61,35 @@ sealed class WeatherType(
         icon = R.drawable.ic_cloudy
     )
 
-    // Overcast & Broken Clouds
     data object OvercastClouds : WeatherType(
         icon = R.drawable.ic_very_cloudy
     )
-}
 
-val iconForId = hashMapOf(
-    "" to R.drawable.ic_rainy
-)
+    companion object {
+        fun fromId(code: Int): WeatherType {
+            return when(code) {
+                in 200 .. 202 -> RainThunderstorm
+
+                in 210 .. 232 -> Thunderstorm
+
+                in 300 .. 321 -> Drizzle
+
+                in 500 .. 531 -> Rain
+
+                in 600 .. 622 -> Snow
+
+                in 701 .. 781 -> Atmosphere
+
+                800 -> SunnyClear
+
+                801 -> FewClouds
+
+                802 -> ScatteredClouds
+
+                in 803 .. 804 -> OvercastClouds
+
+                else -> SunnyClear
+            }
+        }
+    }
+}
