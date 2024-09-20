@@ -1,4 +1,4 @@
-package com.example.weathermobileapp
+package com.example.weathermobileapp.presentation
 
 import  android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -12,7 +12,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.weathermobileapp.presentation.screens.WeatherScreen
 import com.example.weathermobileapp.ui.theme.WeatherMobileAppTheme
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

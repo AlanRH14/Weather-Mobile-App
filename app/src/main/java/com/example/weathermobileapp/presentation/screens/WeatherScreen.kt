@@ -1,11 +1,13 @@
 package com.example.weathermobileapp.presentation.screens
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import com.example.weathermobileapp.R
 import com.example.weathermobileapp.data.local.mockdata.WeatherMockData.WeatherData
 import com.example.weathermobileapp.domain.models.WeatherInfoModel
@@ -20,7 +22,9 @@ fun WeatherScreen(
 ) {
     Column(
         modifier = modifier
+            .background(Color.White)
             .fillMaxWidth()
+
             .padding(GenericPadding.ScreenPadding),
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
