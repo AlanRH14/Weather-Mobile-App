@@ -12,19 +12,19 @@ object WeatherMockData {
         subtitle = "85%"
     )
 
-    private val WeatherInfoItem2 = WeatherMoreInfoModel(
+    val WeatherInfoItem2 = WeatherMoreInfoModel(
         iconRes = R.drawable.ic_sun_full,
         title = "Uv Index",
         subtitle = "2 of 10"
     )
 
-    private val WeatherInfoItem3 = WeatherMoreInfoModel(
+    val WeatherInfoItem3 = WeatherMoreInfoModel(
         iconRes = R.drawable.ic_sun_half,
         title = "Sunrise",
         subtitle = "7:30 AM"
     )
 
-    private val WeatherInfoItem4 = WeatherMoreInfoModel(
+    val WeatherInfoItem4 = WeatherMoreInfoModel(
         iconRes = R.drawable.ic_sun_half,
         title = "Sunset",
         subtitle = "4:28 PM"

@@ -4,7 +4,7 @@ import androidx.annotation.DrawableRes
 import com.example.weathermobileapp.R
 
 sealed class WeatherType(
-    @DrawableRes icon: Int,
+    @DrawableRes val icon: Int,
 ) {
     // Check the codes to see which icon applies.
     data object Thunderstorm : WeatherType(

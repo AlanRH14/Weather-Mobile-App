@@ -1,6 +1,6 @@
 package com.example.weathermobileapp.di
 
-import com.example.weathermobileapp.data.remote.api.ApiConfig
+import com.example.weathermobileapp.data.remote.api.ApiConfig.BASE_URL
 import com.example.weathermobileapp.data.remote.api.WeatherApi
 import dagger.Module
 import dagger.Provides
@@ -19,7 +19,7 @@ object AppModule {
     @Singleton
     fun providesWeatherApi(): WeatherApi {
         return Retrofit.Builder()
-            .baseUrl(ApiConfig.BASE_URL)
+            .baseUrl(BASE_URL)
             .addConverterFactory(MoshiConverterFactory.create())
             .build()
             .create()

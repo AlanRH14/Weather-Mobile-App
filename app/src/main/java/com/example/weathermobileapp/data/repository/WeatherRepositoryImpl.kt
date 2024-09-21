@@ -1,5 +1,6 @@
 package com.example.weathermobileapp.data.repository
 
+import com.example.weathermobileapp.data.mappers.toWeatherModel
 import com.example.weathermobileapp.data.remote.api.ApiConfig
 import com.example.weathermobileapp.data.remote.api.WeatherApi
 import com.example.weathermobileapp.domain.ResultApi
@@ -18,16 +19,18 @@ class WeatherRepositoryImpl @Inject constructor(
     override suspend fun getWeatherData(lat: Double, lon: Double): Flow<ResultApi<WeatherModel>> =
         flow {
             emit(ResultApi.Loading)
-            try {
+            val weatherData = api.getCurrentWeatherData(lat = lat, lon = lon, ApiConfig.API_KEY)
+            emit(ResultApi.Success(data = weatherData.toWeatherModel()))
+            /*try {
                 val weatherData = api.getCurrentWeatherData(lat = lat, lon = lon, ApiConfig.API_KEY)
-                emit(ResultApi.Success(data = WeatherModel()))
+                emit(ResultApi.Success(data = weatherData.toWeatherModel()))
             } catch (e: Exception) {
                 emit(
                     ResultApi.Error(
                         message = "Error: ${e.message}"
                     )
                 )
-            }
+            }*/
         }
 }
 
