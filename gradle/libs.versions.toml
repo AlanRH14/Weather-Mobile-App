@@ -10,9 +10,12 @@ activityCompose = "1.9.2"
 composeBom = "2024.09.02"
 kspVersion = "1.9.10-1.0.13"
 hiltVersion = "2.49"
-retrofitVersion = "2.11.0"
-moshiVersion = "1.15.1"
 roomVersion = "2.6.1"
+retrofitVersion = "2.11.0"
+kotlinxSerialization = "1.7.2"
+converterSerialization = "1.0.0"
+okhttp = "4.12.0"
+playServicesLocation = "21.3.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -32,12 +35,16 @@ androidx-material3 = { group = "androidx.compose.material3", name = "material3" 
 hilt-android-compiler = { group = "com.google.dagger", name = "hilt-android-compiler", version.ref = "hiltVersion" }
 hilt-android = { group = "com.google.dagger", name = "hilt-android", version.ref = "hiltVersion" }
 retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofitVersion"}
-converter-moshi = { module = "com.squareup.retrofit2:converter-moshi", name = "converter-moshi", version.ref = "retrofitVersion" }
-moshi = { group = "com.squareup.moshi", name = "moshi", version.ref = "moshiVersion"}
+converter-gson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "retrofitVersion" }
+converter-serialization = { module = "com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter", version.ref = "converterSerialization" }
+serialization = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinxSerialization" }
 room-android = { group = "androidx.room", name = "room-runtime", version.ref = "roomVersion"}
+okhttp = { module = "com.squareup.okhttp3:okhttp", version.ref = "okhttp" }
+play-services-location = { group = "com.google.android.gms", name = "play-services-location", version.ref = "playServicesLocation" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "kspVersion" }
 hilt = { id = "com.google.dagger.hilt.android", version.ref = "hiltVersion" }
+kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }

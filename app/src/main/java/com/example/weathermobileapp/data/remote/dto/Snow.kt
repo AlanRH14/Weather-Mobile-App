@@ -1,8 +1,8 @@
 package com.example.weathermobileapp.data.remote.dto
 
-import com.squareup.moshi.Json
+import com.google.gson.annotations.SerializedName
 
 data class Snow(
-    @Json(name = "1h")
-    val precipitation: Double
+    @SerializedName("1h")
+    val h: Double? = null
 )

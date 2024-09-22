@@ -66,7 +66,7 @@ sealed class WeatherType(
     )
 
     companion object {
-        fun fromId(code: Int): WeatherType {
+        fun fromId(code: Int?): WeatherType {
             return when(code) {
                 in 200 .. 202 -> RainThunderstorm
 
