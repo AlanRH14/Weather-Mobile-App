@@ -20,7 +20,7 @@ import com.example.weathermobileapp.ui.theme.WeatherInfoTitle
 @Composable
 fun WeatherInfoItem(
     modifier: Modifier,
-    weatherInfo: WeatherMoreInfoModel
+    weatherInfo: WeatherMoreInfoModel,
 ) {
     Row(
         modifier = modifier

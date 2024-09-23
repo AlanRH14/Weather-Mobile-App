@@ -10,17 +10,17 @@ import com.example.weathermobileapp.domain.models.WeatherType
 
 fun WeatherDto.toWeatherModel(): WeatherModel {
     return WeatherModel(
-        image = 0,
+        image = WeatherType.fromId(this.weather?.first()?.id).icon,
         info = WeatherInfoModel(
-            degree = "}°",
-            location = "this.name",
-            description = "this.weather?.first()?.description"
+            degree = "${this.main?.temp}°",
+            location = "${this.name}",
+            description = "${this.weather?.first()?.description}"
         ),
         moreInfo = listOf(
             WeatherMoreInfoModel(
                 iconRes = R.drawable.ic_humidity,
                 title = "Humidity",
-                subtitle = "%"
+                subtitle = "${this.main?.humidity}%"
             ),
             WeatherMockData.WeatherInfoItem2,
             WeatherMockData.WeatherInfoItem3,
