@@ -12,7 +12,7 @@ fun WeatherDto.toWeatherModel(): WeatherModel {
     return WeatherModel(
         image = WeatherType.fromId(this.weather?.first()?.id).icon,
         info = WeatherInfoModel(
-            degree = "${this.main?.temp}°",
+            degree = "${Math.round((this.main?.temp ?: 0.0 )- 273.15)}°",
             location = "${this.name}",
             description = "${this.weather?.first()?.description}"
         ),

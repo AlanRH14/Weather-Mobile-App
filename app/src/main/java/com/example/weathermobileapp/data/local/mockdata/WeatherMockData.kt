@@ -37,7 +37,7 @@ object WeatherMockData {
     )
 
     val WeatherData = WeatherModel(
-        image = R.drawable.ic_couple,
+        image = R.drawable.ic_very_cloudy,
         info = WeatherInfoMock,
         moreInfo = listOf(
             WeatherInfoItem1,

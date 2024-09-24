@@ -14,8 +14,10 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.lifecycle.ViewModel
 import com.example.weathermobileapp.presentation.screens.WeatherScreen
 import com.example.weathermobileapp.presentation.screens.WeatherViewModel
+import com.example.weathermobileapp.ui.theme.SmallPadding
 import com.example.weathermobileapp.ui.theme.WeatherMobileAppTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -61,6 +63,8 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun ScreenPreview() {
     WeatherMobileAppTheme {
-        WeatherScreen()
+        WeatherScreen(
+            modifier = Modifier.padding(SmallPadding),
+        )
     }
 }

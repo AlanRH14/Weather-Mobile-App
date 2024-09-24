@@ -2,4 +2,5 @@
     <string name="app_name">Weather Mobile App</string>
     <string name="weather_header_image_description">Image Header</string>
     <string name="weather_info_image_description">Image Info</string>
+    <string name="weather_today_title">Today</string>
 </resources>
