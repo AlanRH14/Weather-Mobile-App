@@ -17,7 +17,7 @@ import com.example.weathermobileapp.ui.theme.WeatherDegreesStyle
 import com.example.weathermobileapp.ui.theme.WeatherLocationStyle
 
 @Composable
-fun WeatherMoreInfo(
+fun WeatherLocationInfo(
     info: WeatherInfoModel,
 ) {
     Column(
@@ -54,5 +54,5 @@ fun WeatherMoreInfo(
 @Preview
 @Composable
 internal fun WeatherMoreInfoPreview() {
-    WeatherMoreInfo(WeatherData.info ?: WeatherInfoModel())
+    WeatherLocationInfo(WeatherData.info ?: WeatherInfoModel())
 }

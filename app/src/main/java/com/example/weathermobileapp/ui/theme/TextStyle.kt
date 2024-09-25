@@ -48,3 +48,33 @@ val WeatherTodayTitle = TextStyle(
     fontSize = 20.sp,
     textAlign = TextAlign.Center,
 )
+
+val HourlyWeatherHour = TextStyle(
+    color = Color.White,
+    fontSize = 16.sp,
+    textAlign = TextAlign.Center,
+)
+
+val HourlyWeatherTemp = TextStyle(
+    color = Color.White,
+    fontSize = 18.sp,
+    fontWeight = FontWeight.Bold,
+    textAlign = TextAlign.Center
+)
+
+val DailyWeatherTitle = TextStyle(
+    color = Color.White,
+    fontSize = 20.sp,
+    textAlign = TextAlign.Start
+)
+
+val DailyWeatherNextDays = TextStyle(
+    color = Color.White,
+    fontSize = 14.sp,
+    fontWeight = FontWeight.Bold
+)
+
+val DailyWeatherItemText = TextStyle(
+    color = Color.White,
+    fontSize = 14.sp
+)
