@@ -1,6 +1,7 @@
 package com.example.weathermobileapp.data.local.mockdata
 
 import com.example.weathermobileapp.R
+import com.example.weathermobileapp.domain.models.HourlyWeatherModel
 import com.example.weathermobileapp.domain.models.WeatherInfoModel
 import com.example.weathermobileapp.domain.models.WeatherMoreInfoModel
 import com.example.weathermobileapp.domain.models.WeatherModel
@@ -36,6 +37,12 @@ object WeatherMockData {
         description = "Rainy to partly cloudy.\nWinds WSW at 10 to 15 km/h",
     )
 
+    val HourlyWeatherItemMock = HourlyWeatherModel(
+        image = R.drawable.ic_rainythunder,
+        hour = "10 AM",
+        degrees = "20°"
+    )
+
     val WeatherData = WeatherModel(
         image = R.drawable.ic_very_cloudy,
         info = WeatherInfoMock,
@@ -44,6 +51,14 @@ object WeatherMockData {
             WeatherInfoItem2,
             WeatherInfoItem3,
             WeatherInfoItem4,
+        ),
+        hourlyWeather = listOf(
+            HourlyWeatherItemMock,
+            HourlyWeatherItemMock,
+            HourlyWeatherItemMock,
+            HourlyWeatherItemMock,
+            HourlyWeatherItemMock,
+            HourlyWeatherItemMock,
         )
     )
 
