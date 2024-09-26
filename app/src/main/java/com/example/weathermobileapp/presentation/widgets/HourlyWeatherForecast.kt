@@ -13,7 +13,6 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.weathermobileapp.R
-import com.example.weathermobileapp.data.local.mockdata.WeatherMockData.HourlyWeatherItemMock
 import com.example.weathermobileapp.data.local.mockdata.WeatherMockData.WeatherData
 import com.example.weathermobileapp.domain.models.HourlyWeatherModel
 import com.example.weathermobileapp.presentation.components.items.HourlyWeatherItem
@@ -40,8 +39,8 @@ fun HourlyWeatherForecast(
 
         LazyRow(
             modifier = Modifier
-                .padding(VerySmallPadding)
-                .fillMaxWidth(),
+                .fillMaxWidth()
+                .padding(VerySmallPadding),
             horizontalArrangement = Arrangement.spacedBy(4.dp)
         ) {
             items(hourlyWeathers) { hourlyWeather ->
@@ -56,6 +55,6 @@ fun HourlyWeatherForecast(
 @Composable
 internal fun WeatherInfoTodayPreview() {
     HourlyWeatherForecast(
-        hourlyWeathers = WeatherData.hourlyWeather ?: emptyList()
+        hourlyWeathers = WeatherData.hourlyWeathers
     )
 }

@@ -20,8 +20,10 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.weathermobileapp.R
 import com.example.weathermobileapp.data.local.mockdata.WeatherMockData.WeatherData
-import com.example.weathermobileapp.domain.models.WeatherInfoModel
-import com.example.weathermobileapp.domain.models.WeatherMoreInfoModel
+import com.example.weathermobileapp.domain.models.WeatherLocationModel
+import com.example.weathermobileapp.domain.models.WeatherDataModel
+import com.example.weathermobileapp.presentation.components.WeatherDataDisplay
+import com.example.weathermobileapp.presentation.components.WeatherLocationInfo
 import com.example.weathermobileapp.ui.theme.Purple
 import com.example.weathermobileapp.ui.theme.SmallPadding
 import com.example.weathermobileapp.ui.theme.WeatherTitleHeader
@@ -29,8 +31,8 @@ import com.example.weathermobileapp.ui.theme.WeatherTitleHeader
 @Composable
 fun WeatherHeader(
     @DrawableRes image: Int,
-    info: WeatherInfoModel,
-    moreInfo: List<WeatherMoreInfoModel>,
+    info: WeatherLocationModel,
+    moreInfo: List<WeatherDataModel>,
 ) {
     Card(
         modifier = Modifier
@@ -68,7 +70,7 @@ fun WeatherHeader(
                 info = info
             )
 
-            WeatherInfo(
+            WeatherDataDisplay(
                 moreInfoList = moreInfo
             )
         }
@@ -79,8 +81,8 @@ fun WeatherHeader(
 @Composable
 internal fun WeatherHeaderImagePreview() {
     WeatherHeader(
-        image = WeatherData.image ?: R.drawable.ic_heavysnow,
-        info = WeatherData.info ?: WeatherInfoModel(),
-        moreInfo = WeatherData.moreInfo ?: emptyList()
+        image = WeatherData.image,
+        info = WeatherData.locationData,
+        moreInfo = WeatherData.weatherData
     )
 }

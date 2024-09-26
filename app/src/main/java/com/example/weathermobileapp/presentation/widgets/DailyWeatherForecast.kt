@@ -1,5 +1,6 @@
 package com.example.weathermobileapp.presentation.widgets
 
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -10,8 +11,10 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import com.example.weathermobileapp.domain.models.DailyWeatherModel
 import com.example.weathermobileapp.presentation.components.items.DailyWeatherItem
 import com.example.weathermobileapp.ui.theme.DailyWeatherNextDays
 import com.example.weathermobileapp.ui.theme.DailyWeatherTitle
@@ -19,7 +22,9 @@ import com.example.weathermobileapp.ui.theme.SmallPadding
 import com.example.weathermobileapp.ui.theme.VerySmallPadding
 
 @Composable
-fun DailyWeatherForecast() {
+fun DailyWeatherForecast(
+    dailyWeathers: List<DailyWeatherModel>,
+) {
     Column(
         modifier = Modifier
             .fillMaxWidth()
@@ -28,7 +33,9 @@ fun DailyWeatherForecast() {
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(VerySmallPadding)
+                .padding(VerySmallPadding),
+            horizontalArrangement = Arrangement.Center,
+            verticalAlignment = Alignment.CenterVertically,
         ) {
             Text(
                 modifier = Modifier
@@ -59,8 +66,8 @@ fun DailyWeatherForecast() {
                 .fillMaxWidth()
                 .padding(VerySmallPadding)
         ) {
-            repeat(4) {
-                DailyWeatherItem()
+            dailyWeathers.forEach { dailyWeather ->
+                DailyWeatherItem(dailyWeather = dailyWeather)
             }
         }
     }

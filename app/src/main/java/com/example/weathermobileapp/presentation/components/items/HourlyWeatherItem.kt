@@ -13,11 +13,8 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.blur
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
-import com.example.weathermobileapp.R
 import com.example.weathermobileapp.domain.models.HourlyWeatherModel
 import com.example.weathermobileapp.ui.theme.HourlyWeatherHour
 import com.example.weathermobileapp.ui.theme.HourlyWeatherTemp
@@ -46,21 +43,21 @@ fun HourlyWeatherItem(
             Text(
                 modifier = Modifier
                     .fillMaxWidth(),
-                text = hourlyWeather.hour ?: "",
+                text = hourlyWeather.hour,
                 style = HourlyWeatherHour
             )
 
             Image(
                 modifier = Modifier
                     .size(45.dp),
-                painter = painterResource(id = hourlyWeather.image ?: R.drawable.ic_rainythunder),
+                painter = painterResource(id = hourlyWeather.image),
                 contentDescription = "Image Hourly Weather",
             )
 
             Text(
                 modifier = Modifier
                     .fillMaxWidth(),
-                text = hourlyWeather.degrees ?: "",
+                text = hourlyWeather.degrees,
                 style = HourlyWeatherTemp
             )
         }
