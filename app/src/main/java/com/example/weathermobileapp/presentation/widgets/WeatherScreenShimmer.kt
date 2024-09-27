@@ -1,5 +1,6 @@
 package com.example.weathermobileapp.presentation.widgets
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -14,6 +15,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.weathermobileapp.presentation.components.shimmerEffect
+import com.example.weathermobileapp.ui.theme.BackGroundColor
 import com.example.weathermobileapp.ui.theme.GenericPadding.ScreenPadding
 import com.example.weathermobileapp.ui.theme.Shapes
 import com.example.weathermobileapp.ui.theme.SmallPadding
@@ -24,6 +26,7 @@ fun WeatherScreenShimmer(
 ) {
     Column(
         modifier = modifier
+            .background(BackGroundColor)
             .fillMaxSize()
             .padding(ScreenPadding),
     ) {
