@@ -46,6 +46,11 @@ class WeatherViewModel @Inject constructor(
                             }
                         }
                     }
+            } ?: let {
+                _state.value = _state.value.copy(
+                    isLoading = false,
+                    error = "Not Location active"
+                )
             }
         }
     }

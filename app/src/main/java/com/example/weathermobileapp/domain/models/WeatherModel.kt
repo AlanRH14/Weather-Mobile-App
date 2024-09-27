@@ -3,7 +3,9 @@ package com.example.weathermobileapp.domain.models
 import androidx.annotation.DrawableRes
 
 data class WeatherModel(
-    @DrawableRes val image: Int? = null,
-    val info: WeatherInfoModel? = null,
-    val moreInfo: List<WeatherMoreInfoModel>? = null,
+    @DrawableRes val image: Int,
+    val locationData: WeatherLocationModel,
+    val weatherData: List<WeatherDataModel>,
+    val hourlyWeathers: List<HourlyWeatherModel>,
+    val dailyWeathers: List<DailyWeatherModel>,
 )

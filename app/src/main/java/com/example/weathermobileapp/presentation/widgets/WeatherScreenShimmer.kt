@@ -9,108 +9,97 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.HorizontalDivider
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.weathermobileapp.presentation.components.shimmerEffect
-import com.example.weathermobileapp.ui.theme.LargePadding
-import com.example.weathermobileapp.ui.theme.LightGray
-import com.example.weathermobileapp.ui.theme.MediumPadding
+import com.example.weathermobileapp.ui.theme.BackGroundColor
+import com.example.weathermobileapp.ui.theme.GenericPadding.ScreenPadding
 import com.example.weathermobileapp.ui.theme.Shapes
-import com.example.weathermobileapp.ui.theme.VeryLightGray
+import com.example.weathermobileapp.ui.theme.SmallPadding
 
 @Composable
 fun WeatherScreenShimmer(
-    modifier: Modifier,
+    modifier: Modifier = Modifier,
 ) {
-    Box(
+    Column(
         modifier = modifier
+            .background(BackGroundColor)
             .fillMaxSize()
-            .shimmerEffect()
-    )
-
-    Column(
-        modifier = Modifier
-            .padding(top = LargePadding),
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        Box(
-            modifier = Modifier
-                .height(48.dp)
-                .fillMaxWidth()
-                .shimmerEffect()
-        )
-        Box(
-            modifier = Modifier
-                .padding(top = MediumPadding)
-                .height(20.dp)
-                .fillMaxWidth()
-                .shimmerEffect()
-        )
-
-        Box(
-            modifier = Modifier
-                .padding(vertical = LargePadding)
-                .height(16.dp)
-                .fillMaxWidth()
-                .shimmerEffect()
-        )
-    }
-
-    Column(
-        modifier = Modifier
-            .fillMaxWidth()
-            .clip(Shapes.extraSmall)
-            .background(VeryLightGray)
+            .padding(ScreenPadding),
     ) {
 
-        Row(
+        Box(
             modifier = Modifier
-                .padding(MediumPadding),
-            horizontalArrangement = Arrangement.spacedBy(2.dp)
-        ) {
+                .fillMaxWidth()
+                .height(455.dp)
+                .padding(SmallPadding)
+                .shimmerEffect()
+        )
 
-            Box(
-                modifier = Modifier
-                    .weight(1F)
-                    .height(40.dp)
-                    .shimmerEffect(),
-            )
-
-            Box(
-                modifier = Modifier
-                    .weight(1F)
-                    .height(40.dp)
-                    .shimmerEffect(),
-            )
-        }
-
-        HorizontalDivider(
-            color = LightGray
+        Box(
+            modifier = Modifier
+                .height(40.dp)
+                .fillMaxWidth()
+                .padding(SmallPadding)
+                .shimmerEffect()
         )
 
         Row(
             modifier = Modifier
-                .padding(MediumPadding),
+                .fillMaxWidth()
+                .padding(SmallPadding),
+            horizontalArrangement = Arrangement.spacedBy(4.dp)
+        ) {
+            repeat(4) {
+                Box(
+                    modifier = Modifier
+                        .height(150.dp)
+                        .weight(1F)
+                        .clip(Shapes.small)
+                        .padding()
+                        .shimmerEffect()
+                )
+            }
+        }
+
+        Row(
+            modifier = Modifier
+                .padding(SmallPadding),
             horizontalArrangement = Arrangement.spacedBy(2.dp)
         ) {
-
             Box(
                 modifier = Modifier
-                    .weight(1F)
-                    .height(40.dp)
+                    .height(30.dp)
+                    .weight(2F)
+                    .fillMaxWidth()
                     .shimmerEffect(),
             )
 
             Box(
                 modifier = Modifier
-                    .weight(1F)
+                    .height(30.dp)
+                    .fillMaxWidth()
+                    .shimmerEffect(),
+            )
+        }
+
+        repeat(6) {
+            Box(
+                modifier = Modifier
                     .height(40.dp)
+                    .fillMaxWidth()
+                    .padding(SmallPadding)
                     .shimmerEffect(),
             )
         }
     }
+}
+
+@Preview
+@Composable
+internal fun WeatherScreenShimmerPreview() {
+    WeatherScreenShimmer()
 }
