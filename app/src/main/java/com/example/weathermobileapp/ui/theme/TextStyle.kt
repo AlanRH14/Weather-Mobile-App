@@ -34,13 +34,15 @@ val WeatherLocationStyle = TextStyle(
 
 val WeatherInfoTitle = TextStyle(
     color = Color.White,
-    fontWeight = FontWeight.Bold,
+    fontSize = 14.sp,
     textAlign = TextAlign.Center,
 )
 
 val WeatherInfoSubtitle = TextStyle(
     color = Color.White,
-    fontWeight = FontWeight.Bold
+    fontSize = 14.sp,
+    fontWeight = FontWeight.Bold,
+    textAlign = TextAlign.Center,
 )
 
 val WeatherTodayTitle = TextStyle(
@@ -51,13 +53,13 @@ val WeatherTodayTitle = TextStyle(
 
 val HourlyWeatherHour = TextStyle(
     color = Color.White,
-    fontSize = 16.sp,
+    fontSize = 14.sp,
     textAlign = TextAlign.Center,
 )
 
 val HourlyWeatherTemp = TextStyle(
     color = Color.White,
-    fontSize = 18.sp,
+    fontSize = 16.sp,
     fontWeight = FontWeight.Bold,
     textAlign = TextAlign.Center
 )

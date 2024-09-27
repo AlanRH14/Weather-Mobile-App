@@ -10,27 +10,21 @@ import com.example.weathermobileapp.domain.models.WeatherModel
 
 object WeatherMockData {
     private val WeatherInfoItem1 = WeatherDataModel(
-        iconRes = R.drawable.ic_humidity,
+        iconRes = R.drawable.ic_pressure,
+        title = "Pressure",
+        subtitle = "1021hpa"
+    )
+
+    private val WeatherInfoItem2 = WeatherDataModel(
+        iconRes = R.drawable.ic_wind,
+        title = "Wind",
+        subtitle = "4Km/s"
+    )
+
+    private val WeatherInfoItem3 = WeatherDataModel(
+        iconRes = R.drawable.ic_drop,
         title = "Humidity",
-        subtitle = "85%"
-    )
-
-    val WeatherInfoItem2 = WeatherDataModel(
-        iconRes = R.drawable.ic_sun_full,
-        title = "Uv Index",
-        subtitle = "2 of 10"
-    )
-
-    val WeatherInfoItem3 = WeatherDataModel(
-        iconRes = R.drawable.ic_sun_half,
-        title = "Sunrise",
-        subtitle = "7:30 AM"
-    )
-
-    val WeatherInfoItem4 = WeatherDataModel(
-        iconRes = R.drawable.ic_sun_half,
-        title = "Sunset",
-        subtitle = "4:28 PM"
+        subtitle = "60%"
     )
 
     private val WeatherInfoMock = WeatherLocationModel(
@@ -67,7 +61,6 @@ object WeatherMockData {
             WeatherInfoItem1,
             WeatherInfoItem2,
             WeatherInfoItem3,
-            WeatherInfoItem4,
         ),
         hourlyWeathers = listOf(
             HourlyWeatherItemMock,
