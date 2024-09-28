@@ -54,4 +54,25 @@ class WeatherViewModel @Inject constructor(
             }
         }
     }
+
+    fun getWeatherForecastData() {
+        viewModelScope.launch {
+            locationTracker.getCurrentLocation()?.let { location ->
+                repository.getWeatherForecastData(lat = location.latitude, lon = location.longitude)
+                    .collect { forecastData ->
+                        when (forecastData) {
+                            is ResultApi.Loading -> {
+
+                            }
+
+                            is ResultApi.Success -> {
+
+                            }
+
+                            is ResultApi.Error -> {}
+                        }
+                    }
+            }
+        }
+    }
 }

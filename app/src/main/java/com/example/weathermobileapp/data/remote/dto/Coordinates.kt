@@ -2,9 +2,9 @@ package com.example.weathermobileapp.data.remote.dto
 
 import com.google.gson.annotations.SerializedName
 
-data class Coord(
-    @SerializedName("lon")
-    val lon: Double? = null,
+data class Coordinates(
     @SerializedName("lat")
-    val lat: Double? = null,
+    val lat: Double?,
+    @SerializedName("lon")
+    val lon: Double?
 )

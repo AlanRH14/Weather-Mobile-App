@@ -1,10 +1,14 @@
-package com.example.weathermobileapp.data.remote.dto
+package com.example.weathermobileapp.data.remote.dto.current
 
+import com.example.weathermobileapp.data.remote.dto.Clouds
+import com.example.weathermobileapp.data.remote.dto.Coordinates
+import com.example.weathermobileapp.data.remote.dto.Weather
+import com.example.weathermobileapp.data.remote.dto.Wind
 import com.google.gson.annotations.SerializedName
 
 data class WeatherDto(
     @SerializedName("coord")
-    val coordinates: Coord? = null,
+    val coordinates: Coordinates? = null,
     @SerializedName("weather")
     val weather: List<Weather>? = null,
     @SerializedName("base")

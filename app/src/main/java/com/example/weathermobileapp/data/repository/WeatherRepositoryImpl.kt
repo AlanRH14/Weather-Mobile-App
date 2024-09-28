@@ -1,8 +1,10 @@
 package com.example.weathermobileapp.data.repository
 
+import android.util.Log
 import com.example.weathermobileapp.data.mappers.toWeatherModel
-import com.example.weathermobileapp.data.remote.api.ApiConfig
+import com.example.weathermobileapp.data.remote.api.ApiConfig.API_KEY
 import com.example.weathermobileapp.data.remote.api.WeatherApi
+import com.example.weathermobileapp.data.remote.dto.forecast.ForecastDto
 import com.example.weathermobileapp.domain.ResultApi
 import com.example.weathermobileapp.domain.models.WeatherModel
 import com.example.weathermobileapp.domain.repository.WeatherRepository
@@ -18,7 +20,8 @@ class WeatherRepositoryImpl @Inject constructor(
         flow {
             emit(ResultApi.Loading)
             try {
-                val weatherData = api.getCurrentWeatherData(lat = lat, lon = lon, ApiConfig.API_KEY)
+                val weatherData =
+                    api.getWeatherCurrentData(lat = lat, lon = lon, id = API_KEY)
                 emit(ResultApi.Success(data = weatherData.toWeatherModel()))
             } catch (e: Exception) {
                 emit(
@@ -28,8 +31,21 @@ class WeatherRepositoryImpl @Inject constructor(
                 )
             }
         }
+
+    override suspend fun getWeatherForecastData(
+        lat: Double,
+        lon: Double
+    ): Flow<ResultApi<ForecastDto>> =
+        flow {
+            emit(ResultApi.Loading)
+            try {
+                val weatherForecastData = api.getWeatherForecastData(lat = lat, lon = lon, id = API_KEY)
+                Log.d("LordMiau", "Res: $weatherForecastData")
+                emit(ResultApi.Success(weatherForecastData))
+            } catch (e: Exception) {
+                emit(ResultApi.Error(
+                    message = "Error: ${e.message}"
+                ))
+            }
+        }
 }
-
-
-
-
