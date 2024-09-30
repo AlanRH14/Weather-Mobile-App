@@ -62,14 +62,22 @@ class WeatherViewModel @Inject constructor(
                     .collect { forecastData ->
                         when (forecastData) {
                             is ResultApi.Loading -> {
-
+                                _state.value = _state.value.copy(isLoading = true)
                             }
 
                             is ResultApi.Success -> {
-
+                                _state.value = _state.value.copy(
+                                    isLoading = false,
+                                    forecast = forecastData.data
+                                )
                             }
 
-                            is ResultApi.Error -> {}
+                            is ResultApi.Error -> {
+                                _state.value = _state.value.copy(
+                                    isLoading = false,
+                                    error = forecastData.message
+                                )
+                            }
                         }
                     }
             }

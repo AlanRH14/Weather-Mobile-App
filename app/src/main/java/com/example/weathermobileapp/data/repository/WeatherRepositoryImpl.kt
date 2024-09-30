@@ -1,10 +1,11 @@
 package com.example.weathermobileapp.data.repository
 
+import com.example.weathermobileapp.data.mappers.toHourlyWeathers
 import com.example.weathermobileapp.data.mappers.toWeatherModel
 import com.example.weathermobileapp.data.remote.api.ApiConfig.API_KEY
 import com.example.weathermobileapp.data.remote.api.WeatherApi
-import com.example.weathermobileapp.data.remote.dto.forecast.ForecastDto
 import com.example.weathermobileapp.domain.ResultApi
+import com.example.weathermobileapp.domain.models.HourlyWeatherModel
 import com.example.weathermobileapp.domain.models.WeatherModel
 import com.example.weathermobileapp.domain.repository.WeatherRepository
 import kotlinx.coroutines.flow.Flow
@@ -34,12 +35,12 @@ class WeatherRepositoryImpl @Inject constructor(
     override suspend fun getWeatherForecastData(
         lat: Double,
         lon: Double
-    ): Flow<ResultApi<ForecastDto>> =
+    ): Flow<ResultApi<List<HourlyWeatherModel>>> =
         flow {
             emit(ResultApi.Loading)
             try {
                 val weatherForecastData = api.getWeatherForecastData(lat = lat, lon = lon, id = API_KEY)
-                emit(ResultApi.Success(weatherForecastData))
+                emit(ResultApi.Success(weatherForecastData.forecasts.toHourlyWeathers()))
             } catch (e: Exception) {
                 emit(ResultApi.Error(
                     message = "Error: ${e.message}"

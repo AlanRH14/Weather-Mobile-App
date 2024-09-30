@@ -21,6 +21,7 @@ interface WeatherApi {
     suspend fun getWeatherForecastData(
         @Query("lat") lat: Double,
         @Query("lon") lon: Double,
+        @Query("units") units: String = UNITS_DEFAULT,
         @Query("appid") id: String
     ): ForecastDto
 }

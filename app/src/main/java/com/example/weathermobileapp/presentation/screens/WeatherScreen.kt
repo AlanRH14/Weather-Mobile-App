@@ -13,7 +13,7 @@ import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.example.weathermobileapp.data.local.mockdata.WeatherMockData.ErrorMock
-import com.example.weathermobileapp.presentation.widgets.DailyWeatherForecast
+import com.example.weathermobileapp.domain.utils.compareDate
 import com.example.weathermobileapp.presentation.widgets.WeatherHeader
 import com.example.weathermobileapp.presentation.widgets.HourlyWeatherForecast
 import com.example.weathermobileapp.presentation.widgets.ErrorMessageScreen
@@ -32,7 +32,7 @@ fun WeatherScreen(
         WeatherScreenShimmer(modifier = modifier)
     }
 
-    weatherData.weatherData?.let { data ->
+    weatherData.weatherData?.let { weather ->
         Column(
             modifier = modifier
                 .background(BackGroundColor)
@@ -43,14 +43,17 @@ fun WeatherScreen(
         ) {
 
             WeatherHeader(
-                image = data.image,
-                info = data.locationData,
-                moreInfo = data.weatherData,
+                image = weather.image,
+                info = weather.locationData,
+                moreInfo = weather.weatherData,
             )
 
-            HourlyWeatherForecast(data.hourlyWeathers)
+            weatherData.forecast?.let { forecast ->
+                HourlyWeatherForecast(forecast)
+            }
 
-            DailyWeatherForecast(data.dailyWeathers)
+            // DailyWeatherForecast(data.dailyWeathers)
+
         }
     }
 
@@ -60,4 +63,6 @@ fun WeatherScreen(
             errorData = ErrorMock,
         )
     }
+
+    compareDate()
 }

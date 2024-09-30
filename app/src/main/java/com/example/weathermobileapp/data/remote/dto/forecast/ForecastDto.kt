@@ -10,7 +10,7 @@ data class ForecastDto(
     @SerializedName("cnt")
     val cnt: Int?,
     @SerializedName("list")
-    val list: List<Forecast?>?,
+    val forecasts: List<Forecast?>?,
     @SerializedName("city")
     val city: City?,
 )

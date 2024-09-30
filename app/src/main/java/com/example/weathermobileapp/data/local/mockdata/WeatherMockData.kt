@@ -62,14 +62,6 @@ object WeatherMockData {
             WeatherInfoItem2,
             WeatherInfoItem3,
         ),
-        hourlyWeathers = listOf(
-            HourlyWeatherItemMock,
-            HourlyWeatherItemMock,
-            HourlyWeatherItemMock,
-            HourlyWeatherItemMock,
-            HourlyWeatherItemMock,
-            HourlyWeatherItemMock,
-        ),
         dailyWeathers = listOf(
             DailyWeatherItemMock,
             DailyWeatherItemMock,
@@ -78,5 +70,14 @@ object WeatherMockData {
             DailyWeatherItemMock,
             DailyWeatherItemMock,
         )
+    )
+
+    val ForecastWeather = listOf(
+        HourlyWeatherItemMock,
+        HourlyWeatherItemMock,
+        HourlyWeatherItemMock,
+        HourlyWeatherItemMock,
+        HourlyWeatherItemMock,
+        HourlyWeatherItemMock,
     )
 }
