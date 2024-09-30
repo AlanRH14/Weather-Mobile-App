@@ -1,6 +1,5 @@
 package com.example.weathermobileapp.data.repository
 
-import android.util.Log
 import com.example.weathermobileapp.data.mappers.toWeatherModel
 import com.example.weathermobileapp.data.remote.api.ApiConfig.API_KEY
 import com.example.weathermobileapp.data.remote.api.WeatherApi
@@ -40,7 +39,6 @@ class WeatherRepositoryImpl @Inject constructor(
             emit(ResultApi.Loading)
             try {
                 val weatherForecastData = api.getWeatherForecastData(lat = lat, lon = lon, id = API_KEY)
-                Log.d("LordMiau", "Res: $weatherForecastData")
                 emit(ResultApi.Success(weatherForecastData))
             } catch (e: Exception) {
                 emit(ResultApi.Error(

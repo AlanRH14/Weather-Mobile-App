@@ -24,6 +24,7 @@ import com.example.weathermobileapp.domain.models.WeatherLocationModel
 import com.example.weathermobileapp.domain.models.WeatherDataModel
 import com.example.weathermobileapp.presentation.components.WeatherDataDisplay
 import com.example.weathermobileapp.presentation.components.WeatherLocationInfo
+import com.example.weathermobileapp.ui.theme.GenericPadding.CardHeaderPadding
 import com.example.weathermobileapp.ui.theme.Purple
 import com.example.weathermobileapp.ui.theme.SmallPadding
 import com.example.weathermobileapp.ui.theme.WeatherTitleHeader
@@ -35,23 +36,22 @@ fun WeatherHeader(
     moreInfo: List<WeatherDataModel>,
 ) {
     Card(
-        modifier = Modifier
-            .padding(SmallPadding),
         colors = CardDefaults.cardColors(
             containerColor = Purple
         )
     ) {
         Column(
             modifier = Modifier
-                .fillMaxWidth(),
+                .fillMaxWidth()
+                .padding(CardHeaderPadding),
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
             Text(
                 modifier = Modifier
-                    .padding(top = SmallPadding)
+                    .padding(vertical = SmallPadding)
                     .fillMaxWidth(),
-                text = "Mostly Cloundy",
+                text = info.city,
                 style = WeatherTitleHeader,
             )
 
