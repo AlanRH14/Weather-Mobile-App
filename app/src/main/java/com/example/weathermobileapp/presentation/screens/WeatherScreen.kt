@@ -1,5 +1,6 @@
 package com.example.weathermobileapp.presentation.screens
 
+import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -13,7 +14,7 @@ import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.example.weathermobileapp.data.local.mockdata.WeatherMockData.ErrorMock
-import com.example.weathermobileapp.domain.utils.compareDate
+import com.example.weathermobileapp.domain.utils.compareDate2
 import com.example.weathermobileapp.presentation.widgets.WeatherHeader
 import com.example.weathermobileapp.presentation.widgets.HourlyWeatherForecast
 import com.example.weathermobileapp.presentation.widgets.ErrorMessageScreen
@@ -50,6 +51,8 @@ fun WeatherScreen(
 
             weatherData.forecast?.let { forecast ->
                 HourlyWeatherForecast(forecast)
+
+                Log.d("LordMiau", "${compareDate2(forecast)}")
             }
 
             // DailyWeatherForecast(data.dailyWeathers)
@@ -64,5 +67,5 @@ fun WeatherScreen(
         )
     }
 
-    compareDate()
+
 }

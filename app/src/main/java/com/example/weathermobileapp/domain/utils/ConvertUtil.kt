@@ -1,6 +1,6 @@
 package com.example.weathermobileapp.domain.utils
 
-import android.util.Log
+import com.example.weathermobileapp.domain.models.HourlyWeatherModel
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
@@ -22,7 +22,7 @@ fun Int?.toCustomDateFormat(): String {
 fun Int?.toHourFormat(): String {
     return try {
         if (this != null) {
-            val dateFormat = SimpleDateFormat("dd h:mm a", Locale.US)
+            val dateFormat = SimpleDateFormat("h:mm a", Locale.ROOT)
             val date = Date(this * 1000L)
             dateFormat.format(date)
         } else {
@@ -33,28 +33,23 @@ fun Int?.toHourFormat(): String {
     }
 }
 
-fun compareDate() {
-    val dateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.US)
+fun compareDate2(test: List<HourlyWeatherModel>): List<HourlyWeatherModel> {
+    val dateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.ROOT)
     val currentDay = dateFormat.format(System.currentTimeMillis())
-    val date = Date(1727978400 * 1000L)
+    val tomorrow = dateFormat.format(System.currentTimeMillis() + 24 * 60 * 60 * 1000)
+    val nextDay = dateFormat.format(System.currentTimeMillis() + 48 * 60 * 60 * 1000)
+    val date = Date(1727751600 * 1000L)
     val weatherDate = dateFormat.format(date)
-    val tomorrow = currentDay.plus(1)
-    when {
-        weatherDate == currentDay -> {
-            Log.d("LordMiau", "Res: Hoy $currentDay")
-        }
 
-        weatherDate == tomorrow -> {
-            Log.d("LordMiau", "Res: Mañana $currentDay")
-        }
+    return test.filter { model ->
+        when {
+            weatherDate == currentDay -> model.hour == currentDay
 
-        weatherDate > tomorrow -> {
-            Log.d("LordMiau", "Res: De más días $currentDay")
-        }
+            weatherDate == tomorrow -> model.hour == tomorrow
 
-        else -> {
-            Log.d("LordMiau", "Res: N/A")
+            weatherDate >= nextDay -> model.hour >= nextDay
+
+            else -> true
         }
     }
-
 }
