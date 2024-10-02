@@ -8,6 +8,7 @@ import com.example.weathermobileapp.domain.repository.WeatherRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -28,29 +29,35 @@ class WeatherViewModel @Inject constructor(
                     .collect { weatherRes ->
                         when (weatherRes) {
                             is ResultApi.Loading -> {
-                                _state.value = _state.value.copy(isLoading = true)
+                                _state.update { it.copy(isLoading = true) }
                             }
 
                             is ResultApi.Success -> {
-                                _state.value = _state.value.copy(
-                                    isLoading = false,
-                                    weatherData = weatherRes.data
-                                )
+                                _state.update {
+                                    it.copy(
+                                        isLoading = false,
+                                        weatherData = weatherRes.data
+                                    )
+                                }
                             }
 
                             is ResultApi.Error -> {
-                                _state.value = _state.value.copy(
-                                    isLoading = false,
-                                    error = weatherRes.message
-                                )
+                                _state.update {
+                                    it.copy(
+                                        isLoading = false,
+                                        error = weatherRes.message
+                                    )
+                                }
                             }
                         }
                     }
             } ?: let {
-                _state.value = _state.value.copy(
-                    isLoading = false,
-                    error = "Not Location active"
-                )
+                _state.update {
+                    it.copy(
+                        isLoading = false,
+                        error = "Not Location active"
+                    )
+                }
             }
         }
     }
@@ -62,25 +69,44 @@ class WeatherViewModel @Inject constructor(
                     .collect { forecastData ->
                         when (forecastData) {
                             is ResultApi.Loading -> {
-                                _state.value = _state.value.copy(isLoading = true)
+                                _state.update { it.copy(isLoading = true) }
                             }
 
                             is ResultApi.Success -> {
-                                _state.value = _state.value.copy(
-                                    isLoading = false,
-                                    forecast = forecastData.data
-                                )
+                                _state.update {
+                                    it.copy(
+                                        isLoading = false,
+                                        forecast = forecastData.data
+                                    )
+                                }
                             }
 
                             is ResultApi.Error -> {
-                                _state.value = _state.value.copy(
-                                    isLoading = false,
-                                    error = forecastData.message
-                                )
+                                _state.update {
+                                    it.copy(
+                                        isLoading = false,
+                                        error = forecastData.message
+                                    )
+                                }
                             }
                         }
                     }
             }
         }
     }
+
+    /*fun getCurrentDayForecast(): List<HourlyWeatherModel> {
+        val currentTime = System.currentTimeMillis() / 1000 // Convert to seconds
+        return _state.value.forecast.filter {
+            it.hour >= currentTime && it.dt < currentTime + 86400 // 86400 seconds in a day
+        }
+    }
+
+    fun getTomorrowForecast(): List<HourlyWeatherModel> {
+        val tomorrowStart = System.currentTimeMillis() / 1000 + 86400
+        val tomorrowEnd = tomorrowStart + 86400
+        return forecast.filter {
+            it.dt >= tomorrowStart && it.dt < tomorrowEnd
+        }
+    }*/
 }
