@@ -33,7 +33,7 @@ fun Int?.toHourFormat(): String {
     }
 }
 
-fun compareDate2(test: List<HourlyWeatherModel>): List<HourlyWeatherModel> {
+private fun compareDate(test: List<HourlyWeatherModel>): List<HourlyWeatherModel> {
     val dateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.ROOT)
     val currentDay = dateFormat.format(System.currentTimeMillis())
     val tomorrow = dateFormat.format(System.currentTimeMillis() + 24 * 60 * 60 * 1000)
@@ -41,13 +41,13 @@ fun compareDate2(test: List<HourlyWeatherModel>): List<HourlyWeatherModel> {
     val date = Date(1727751600 * 1000L)
     val weatherDate = dateFormat.format(date)
 
-    return test.filter { model ->
+    return test.filter { forcast ->
         when {
-            weatherDate == currentDay -> model.hour == currentDay
+            weatherDate == currentDay -> forcast.hour == currentDay
 
-            weatherDate == tomorrow -> model.hour == tomorrow
+            weatherDate == tomorrow -> forcast.hour == tomorrow
 
-            weatherDate >= nextDay -> model.hour >= nextDay
+            weatherDate >= nextDay -> forcast.hour >= nextDay
 
             else -> true
         }

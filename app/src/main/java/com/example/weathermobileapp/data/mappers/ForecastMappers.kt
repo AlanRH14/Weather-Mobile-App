@@ -21,3 +21,5 @@ fun List<Forecast?>?.toHourlyWeathers(): List<HourlyWeatherModel> {
 
     return newForecast
 }
+
+

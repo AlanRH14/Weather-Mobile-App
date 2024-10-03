@@ -94,19 +94,4 @@ class WeatherViewModel @Inject constructor(
             }
         }
     }
-
-    /*fun getCurrentDayForecast(): List<HourlyWeatherModel> {
-        val currentTime = System.currentTimeMillis() / 1000 // Convert to seconds
-        return _state.value.forecast.filter {
-            it.hour >= currentTime && it.dt < currentTime + 86400 // 86400 seconds in a day
-        }
-    }
-
-    fun getTomorrowForecast(): List<HourlyWeatherModel> {
-        val tomorrowStart = System.currentTimeMillis() / 1000 + 86400
-        val tomorrowEnd = tomorrowStart + 86400
-        return forecast.filter {
-            it.dt >= tomorrowStart && it.dt < tomorrowEnd
-        }
-    }*/
 }
