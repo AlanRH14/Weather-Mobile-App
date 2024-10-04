@@ -1,11 +1,11 @@
 package com.example.weathermobileapp.data.repository
 
-import com.example.weathermobileapp.data.mappers.toHourlyWeathers
+import com.example.weathermobileapp.data.mappers.toForecastWeathers
 import com.example.weathermobileapp.data.mappers.toWeatherModel
 import com.example.weathermobileapp.data.remote.api.ApiConfig.API_KEY
 import com.example.weathermobileapp.data.remote.api.WeatherApi
 import com.example.weathermobileapp.domain.ResultApi
-import com.example.weathermobileapp.domain.models.HourlyWeatherModel
+import com.example.weathermobileapp.domain.models.WeatherForecast
 import com.example.weathermobileapp.domain.models.WeatherModel
 import com.example.weathermobileapp.domain.repository.WeatherRepository
 import kotlinx.coroutines.flow.Flow
@@ -35,12 +35,12 @@ class WeatherRepositoryImpl @Inject constructor(
     override suspend fun getWeatherForecastData(
         lat: Double,
         lon: Double
-    ): Flow<ResultApi<List<HourlyWeatherModel>>> =
+    ): Flow<ResultApi<WeatherForecast>> =
         flow {
             emit(ResultApi.Loading)
             try {
                 val weatherForecastData = api.getWeatherForecastData(lat = lat, lon = lon, id = API_KEY)
-                emit(ResultApi.Success(weatherForecastData.forecasts.toHourlyWeathers()))
+                emit(ResultApi.Success(weatherForecastData.forecasts.toForecastWeathers()))
             } catch (e: Exception) {
                 emit(ResultApi.Error(
                     message = "Error: ${e.message}"

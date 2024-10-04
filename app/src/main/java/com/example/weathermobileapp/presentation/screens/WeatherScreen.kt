@@ -13,6 +13,7 @@ import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.example.weathermobileapp.data.local.mockdata.WeatherMockData.ErrorMock
+import com.example.weathermobileapp.presentation.widgets.DailyWeatherForecast
 import com.example.weathermobileapp.presentation.widgets.WeatherHeader
 import com.example.weathermobileapp.presentation.widgets.HourlyWeatherForecast
 import com.example.weathermobileapp.presentation.widgets.ErrorMessageScreen
@@ -48,13 +49,10 @@ fun WeatherScreen(
             )
 
             weatherData.forecast?.let { forecast ->
-                HourlyWeatherForecast(forecast)
+                HourlyWeatherForecast(forecast.hourlyWeather)
 
-                // Log.d("LordMiau", "${compareDate(forecast)}")
+                DailyWeatherForecast(forecast.dailyWeather)
             }
-
-            // DailyWeatherForecast(data.dailyWeathers)
-
         }
     }
 

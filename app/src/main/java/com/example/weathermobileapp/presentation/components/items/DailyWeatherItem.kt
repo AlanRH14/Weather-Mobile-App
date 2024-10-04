@@ -11,7 +11,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.weathermobileapp.data.local.mockdata.WeatherMockData.WeatherData
 import com.example.weathermobileapp.domain.models.DailyWeatherModel
 import com.example.weathermobileapp.ui.theme.DailyWeatherItemText
 import com.example.weathermobileapp.ui.theme.GenericPadding.DailyWeather
@@ -52,5 +54,13 @@ fun DailyWeatherItem(
             text = dailyWeather.highTemp,
             style = DailyWeatherItemText
         )
+    }
+}
+
+@Preview
+@Composable
+fun DailyWeatherItemPreview() {
+    WeatherData.dailyWeathers.forEach {
+        DailyWeatherItem(it)
     }
 }

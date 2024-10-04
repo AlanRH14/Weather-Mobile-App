@@ -1,7 +1,7 @@
 package com.example.weathermobileapp.domain.utils
 
-import com.example.weathermobileapp.domain.models.HourlyWeatherModel
 import java.text.SimpleDateFormat
+import java.util.Calendar
 import java.util.Date
 import java.util.Locale
 
@@ -33,23 +33,31 @@ fun Int?.toHourFormat(): String {
     }
 }
 
-private fun compareDate(test: List<HourlyWeatherModel>): List<HourlyWeatherModel> {
-    val dateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.ROOT)
-    val currentDay = dateFormat.format(System.currentTimeMillis())
-    val tomorrow = dateFormat.format(System.currentTimeMillis() + 24 * 60 * 60 * 1000)
-    val nextDay = dateFormat.format(System.currentTimeMillis() + 48 * 60 * 60 * 1000)
-    val date = Date(1727751600 * 1000L)
-    val weatherDate = dateFormat.format(date)
 
-    return test.filter { forcast ->
-        when {
-            weatherDate == currentDay -> forcast.hour == currentDay
+fun Int?.isToday(): Boolean {
+    return this?.let { Date(it * 1000L).isToday() } ?: false
+}
 
-            weatherDate == tomorrow -> forcast.hour == tomorrow
+fun Int?.isTomorrow(): Boolean {
+    return this?.let { Date(it * 1000L).isTomorrow() } ?: false
+}
 
-            weatherDate >= nextDay -> forcast.hour >= nextDay
+private fun Date.isToday(): Boolean {
+    val calendar = Calendar.getInstance()
+    calendar.time = this
+    val today = Calendar.getInstance()
+    today.time = Date()
+    return calendar.get(Calendar.YEAR) == today.get(Calendar.YEAR) &&
+            calendar.get(Calendar.DAY_OF_YEAR) == today.get(Calendar.DAY_OF_YEAR)
 
-            else -> true
-        }
-    }
+}
+
+private fun Date.isTomorrow(): Boolean {
+    val calendar = Calendar.getInstance()
+    calendar.time = this
+    val tomorrow = Calendar.getInstance()
+    tomorrow.time = Date()
+    tomorrow.add(Calendar.DAY_OF_YEAR, 1)
+    return calendar.get(Calendar.YEAR) == tomorrow.get(Calendar.YEAR) &&
+            calendar.get(Calendar.DAY_OF_YEAR) == tomorrow.get(Calendar.DAY_OF_YEAR)
 }
