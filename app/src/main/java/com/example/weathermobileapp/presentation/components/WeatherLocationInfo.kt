@@ -11,8 +11,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.weathermobileapp.data.local.mockdata.WeatherMockData.WeatherData
 import com.example.weathermobileapp.domain.models.WeatherLocationModel
+import com.example.weathermobileapp.ui.theme.MediumPadding
 import com.example.weathermobileapp.ui.theme.WeatherDateHeader
-import com.example.weathermobileapp.ui.theme.SmallPadding
 import com.example.weathermobileapp.ui.theme.WeatherDegreesStyle
 import com.example.weathermobileapp.ui.theme.WeatherLocationStyle
 
@@ -22,14 +22,14 @@ fun WeatherLocationInfo(
 ) {
     Column(
         modifier = Modifier
-            .fillMaxWidth(),
+            .fillMaxWidth()
+            .padding(MediumPadding),
         horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.spacedBy(SmallPadding)
+        verticalArrangement = Arrangement.Center
     ) {
         Text(
             modifier = Modifier
-                .fillMaxWidth()
-                .padding(top = SmallPadding),
+                .fillMaxWidth(),
             text = info.date,
             style = WeatherDateHeader,
         )
@@ -43,9 +43,8 @@ fun WeatherLocationInfo(
 
         Text(
             modifier = Modifier
-                .padding(bottom = SmallPadding)
                 .fillMaxWidth(),
-            text = info.location,
+            text = info.description,
             style = WeatherLocationStyle
         )
     }

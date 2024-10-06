@@ -6,6 +6,5 @@ data class WeatherModel(
     @DrawableRes val image: Int,
     val locationData: WeatherLocationModel,
     val weatherData: List<WeatherDataModel>,
-    val hourlyWeathers: List<HourlyWeatherModel>,
     val dailyWeathers: List<DailyWeatherModel>,
 )

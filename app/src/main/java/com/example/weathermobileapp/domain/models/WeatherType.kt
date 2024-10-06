@@ -41,7 +41,7 @@ sealed class WeatherType(
     )
 
     data object Atmosphere : WeatherType(
-        icon = R.drawable.ic_pressure
+        icon = R.drawable.ic_mint
     )
 
     data object SunnyClear : WeatherType(

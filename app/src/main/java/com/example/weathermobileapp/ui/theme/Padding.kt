@@ -15,6 +15,11 @@ object GenericPadding {
         horizontal = MediumPadding,
     )
 
+    val CardHeaderPadding = PaddingValues(
+        vertical = MediumPadding,
+        horizontal = SmallPadding
+    )
+
     val TodayPadding = PaddingValues(
         vertical = SmallPadding,
         horizontal = LargePadding,

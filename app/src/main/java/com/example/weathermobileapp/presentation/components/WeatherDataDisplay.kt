@@ -2,7 +2,6 @@ package com.example.weathermobileapp.presentation.components
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.Composable
@@ -12,7 +11,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.example.weathermobileapp.data.local.mockdata.WeatherMockData.WeatherData
 import com.example.weathermobileapp.domain.models.WeatherDataModel
 import com.example.weathermobileapp.presentation.components.items.WeatherInfoItem
-import com.example.weathermobileapp.ui.theme.MediumPadding
 
 @Composable
 fun WeatherDataDisplay(
@@ -20,8 +18,7 @@ fun WeatherDataDisplay(
 ) {
     LazyRow(
         modifier = Modifier
-            .fillMaxWidth()
-            .padding(MediumPadding),
+            .fillMaxWidth(),
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.SpaceBetween,
     ) {

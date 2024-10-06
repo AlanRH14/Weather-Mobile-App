@@ -19,7 +19,6 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
-
     private val viewModel: WeatherViewModel by viewModels()
     private lateinit var permissionLauncher: ActivityResultLauncher<Array<String>>
 
@@ -29,6 +28,7 @@ class MainActivity : ComponentActivity() {
             ActivityResultContracts.RequestMultiplePermissions()
         ) {
             viewModel.getWeatherData()
+            viewModel.getWeatherForecastData()
         }
         permissionLauncher.launch(
             arrayOf(
@@ -40,7 +40,10 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             WeatherMobileAppTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
+                Scaffold(
+                    modifier = Modifier
+                        .fillMaxSize()
+                ) { innerPadding ->
                     WeatherScreen(modifier = Modifier.padding(innerPadding))
                 }
             }

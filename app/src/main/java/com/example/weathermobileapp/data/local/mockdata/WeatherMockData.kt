@@ -28,9 +28,9 @@ object WeatherMockData {
     )
 
     private val WeatherInfoMock = WeatherLocationModel(
+        city = "New York City, NY",
         date = "Mon June 17 | 10:00 AM",
         degree = "11°",
-        location = "New York City, NY",
         description = "Rainy to partly cloudy.\nWinds WSW at 10 to 15 km/h",
     )
 
@@ -62,14 +62,6 @@ object WeatherMockData {
             WeatherInfoItem2,
             WeatherInfoItem3,
         ),
-        hourlyWeathers = listOf(
-            HourlyWeatherItemMock,
-            HourlyWeatherItemMock,
-            HourlyWeatherItemMock,
-            HourlyWeatherItemMock,
-            HourlyWeatherItemMock,
-            HourlyWeatherItemMock,
-        ),
         dailyWeathers = listOf(
             DailyWeatherItemMock,
             DailyWeatherItemMock,
@@ -78,5 +70,14 @@ object WeatherMockData {
             DailyWeatherItemMock,
             DailyWeatherItemMock,
         )
+    )
+
+    val ForecastWeather = listOf(
+        HourlyWeatherItemMock,
+        HourlyWeatherItemMock,
+        HourlyWeatherItemMock,
+        HourlyWeatherItemMock,
+        HourlyWeatherItemMock,
+        HourlyWeatherItemMock,
     )
 }

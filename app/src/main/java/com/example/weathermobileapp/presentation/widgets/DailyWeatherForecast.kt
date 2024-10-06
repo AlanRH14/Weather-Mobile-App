@@ -46,7 +46,9 @@ fun DailyWeatherForecast(
             )
 
             TextButton(
-                onClick = {}
+                onClick = {
+
+                }
             ) {
                 Text(
                     text = "Next day´s",

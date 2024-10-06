@@ -1,4 +1,4 @@
-package com.example.weathermobileapp.data.remote.dto
+package com.example.weathermobileapp.data.remote.dto.current
 
 import com.google.gson.annotations.SerializedName
 

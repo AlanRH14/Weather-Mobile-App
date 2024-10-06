@@ -32,7 +32,7 @@ fun WeatherScreen(
         WeatherScreenShimmer(modifier = modifier)
     }
 
-    weatherData.weatherData?.let { data ->
+    weatherData.weatherData?.let { weather ->
         Column(
             modifier = modifier
                 .background(BackGroundColor)
@@ -43,14 +43,16 @@ fun WeatherScreen(
         ) {
 
             WeatherHeader(
-                image = data.image,
-                info = data.locationData,
-                moreInfo = data.weatherData,
+                image = weather.image,
+                info = weather.locationData,
+                moreInfo = weather.weatherData,
             )
 
-            HourlyWeatherForecast(data.hourlyWeathers)
+            weatherData.forecast?.let { forecast ->
+                HourlyWeatherForecast(forecast.hourlyWeather)
 
-            DailyWeatherForecast(data.dailyWeathers)
+                DailyWeatherForecast(forecast.dailyWeather)
+            }
         }
     }
 
@@ -60,4 +62,6 @@ fun WeatherScreen(
             errorData = ErrorMock,
         )
     }
+
+
 }
