@@ -34,7 +34,9 @@ fun ErrorMessageScreen(
         verticalArrangement = Arrangement.Center,
     ) {
         Image(
-            painterResource(errorData.image),
+            modifier = Modifier
+                .weight(1F),
+            painter = painterResource(errorData.image),
             contentDescription = "Error Image",
         )
 
