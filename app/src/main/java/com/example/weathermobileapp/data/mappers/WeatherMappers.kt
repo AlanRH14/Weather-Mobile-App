@@ -7,14 +7,15 @@ import com.example.weathermobileapp.domain.models.WeatherDataModel
 import com.example.weathermobileapp.domain.models.WeatherLocationModel
 import com.example.weathermobileapp.domain.models.WeatherModel
 import com.example.weathermobileapp.domain.models.WeatherType
-import com.example.weathermobileapp.domain.utils.toCustomDateFormat
+import com.example.weathermobileapp.domain.utils.DatePatternKeys.DATE_HOUR
+import com.example.weathermobileapp.domain.utils.DateUtils.toCustomDateFormat
 
 fun WeatherDto.toWeatherModel(): WeatherModel {
     return WeatherModel(
         image = WeatherType.fromId(this.weather?.first()?.id).icon,
         locationData = WeatherLocationModel(
             city = "${this.name}",
-            date = this.dt.toCustomDateFormat(),
+            date = this.dt.toCustomDateFormat(DATE_HOUR),
             degree = "${Math.round(this.main?.temp ?: 0.0)}°",
             description = "${this.weather?.first()?.description}"
         ),
