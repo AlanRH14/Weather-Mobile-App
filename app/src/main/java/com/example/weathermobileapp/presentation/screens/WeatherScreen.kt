@@ -62,6 +62,4 @@ fun WeatherScreen(
             errorData = ErrorMock,
         )
     }
-
-
 }
