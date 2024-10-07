@@ -1,4 +1,4 @@
-package com.example.weathermobileapp.presentation.screens
+package com.example.weathermobileapp.presentation.screens.next_days_forecast
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -13,54 +13,13 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class WeatherViewModel @Inject constructor(
+class ForecastViewModel @Inject constructor(
     private val repository: WeatherRepository,
-    private val locationTracker: LocationTracker
+    private val locationTracker: LocationTracker,
 ) : ViewModel() {
 
-    private val _state = MutableStateFlow(WeatherState())
-    val state: StateFlow<WeatherState> get() = _state
-
-    fun getWeatherData() {
-        viewModelScope.launch {
-            _state.value = _state.value.copy(isLoading = true)
-            locationTracker.getCurrentLocation()?.let { location ->
-                repository.getWeatherData(lat = location.latitude, location.longitude)
-                    .collect { weatherRes ->
-                        when (weatherRes) {
-                            is ResultApi.Loading -> {
-                                _state.update { it.copy(isLoading = true) }
-                            }
-
-                            is ResultApi.Success -> {
-                                _state.update {
-                                    it.copy(
-                                        isLoading = false,
-                                        weatherData = weatherRes.data
-                                    )
-                                }
-                            }
-
-                            is ResultApi.Error -> {
-                                _state.update {
-                                    it.copy(
-                                        isLoading = false,
-                                        error = weatherRes.message
-                                    )
-                                }
-                            }
-                        }
-                    }
-            } ?: let {
-                _state.update {
-                    it.copy(
-                        isLoading = false,
-                        error = "Not Location active"
-                    )
-                }
-            }
-        }
-    }
+    private val _state = MutableStateFlow(NextDaysForecastState())
+    val state: StateFlow<NextDaysForecastState> get() = _state
 
     fun getWeatherForecastData() {
         viewModelScope.launch {

@@ -28,11 +28,14 @@ object DateUtils {
         return this?.let { Date(it * 1000L).isTomorrow() } ?: false
     }
 
+    fun Int?.isNextDays(): Boolean {
+        return this?.let { Date(it * 1000L).isNextDays() } ?: false
+    }
+
     private fun Date.isToday(): Boolean {
         val calendar = Calendar.getInstance()
         calendar.time = this
         val today = Calendar.getInstance()
-        today.time = Date()
         return calendar.get(Calendar.YEAR) == today.get(Calendar.YEAR) &&
                 calendar.get(Calendar.DAY_OF_YEAR) == today.get(Calendar.DAY_OF_YEAR)
     }
@@ -41,9 +44,17 @@ object DateUtils {
         val calendar = Calendar.getInstance()
         calendar.time = this
         val tomorrow = Calendar.getInstance()
-        tomorrow.time = Date()
         tomorrow.add(Calendar.DAY_OF_YEAR, 1)
         return calendar.get(Calendar.YEAR) == tomorrow.get(Calendar.YEAR) &&
                 calendar.get(Calendar.DAY_OF_YEAR) == tomorrow.get(Calendar.DAY_OF_YEAR)
+    }
+
+    private fun Date.isNextDays(): Boolean {
+        val calendar = Calendar.getInstance()
+        calendar.time = this
+        val nextDays = Calendar.getInstance()
+        nextDays.add(Calendar.DAY_OF_YEAR, 2)
+        return calendar.get(Calendar.YEAR) == nextDays.get(Calendar.YEAR) &&
+                calendar.get(Calendar.DAY_OF_YEAR) >= nextDays.get(Calendar.DAY_OF_YEAR)
     }
 }

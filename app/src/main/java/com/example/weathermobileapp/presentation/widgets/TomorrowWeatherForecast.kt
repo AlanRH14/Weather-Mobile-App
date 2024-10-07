@@ -22,8 +22,9 @@ import com.example.weathermobileapp.ui.theme.SmallPadding
 import com.example.weathermobileapp.ui.theme.VerySmallPadding
 
 @Composable
-fun DailyWeatherForecast(
-    dailyWeathers: List<DailyWeatherModel>,
+fun TomorrowWeatherForecast(
+    forecastTomorrow: List<DailyWeatherModel>,
+    onNextDaysForecastClick: () -> Unit,
 ) {
     Column(
         modifier = Modifier
@@ -41,13 +42,13 @@ fun DailyWeatherForecast(
                 modifier = Modifier
                     .weight(1F)
                     .fillMaxWidth(),
-                text = "Future",
+                text = "Tomorrow",
                 style = DailyWeatherTitle
             )
 
             TextButton(
                 onClick = {
-
+                    onNextDaysForecastClick()
                 }
             ) {
                 Text(
@@ -63,14 +64,8 @@ fun DailyWeatherForecast(
             }
         }
 
-        Column(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(VerySmallPadding)
-        ) {
-            dailyWeathers.forEach { dailyWeather ->
-                DailyWeatherItem(dailyWeather = dailyWeather)
-            }
+        forecastTomorrow.forEach { forecast ->
+            DailyWeatherItem(dailyWeather = forecast)
         }
     }
 }

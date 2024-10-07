@@ -16,6 +16,7 @@ import com.example.weathermobileapp.data.local.mockdata.WeatherMockData.WeatherD
 import com.example.weathermobileapp.domain.models.DailyWeatherModel
 import com.example.weathermobileapp.ui.theme.DailyWeatherItemText
 import com.example.weathermobileapp.ui.theme.GenericPadding.DailyWeather
+import com.example.weathermobileapp.ui.theme.VerySmallPadding
 
 @Composable
 fun DailyWeatherItem(
@@ -24,7 +25,7 @@ fun DailyWeatherItem(
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(),
+            .padding(VerySmallPadding),
         verticalAlignment = Alignment.CenterVertically,
 
         ) {

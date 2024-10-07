@@ -6,8 +6,9 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.example.weathermobileapp.presentation.screens.WeatherScreen
-import com.example.weathermobileapp.presentation.screens.WeatherViewModel
+import com.example.weathermobileapp.presentation.screens.next_days_forecast.NextDaysForecastScreen
+import com.example.weathermobileapp.presentation.screens.weather.WeatherScreen
+import com.example.weathermobileapp.presentation.screens.weather.WeatherViewModel
 
 @Composable
 fun AppNavHost(
@@ -23,10 +24,15 @@ fun AppNavHost(
         composable(Screen.Weather.route) {
             WeatherScreen(
                 modifier = modifier,
-                weatherVM = weatherVM
+                weatherVM = weatherVM,
+                navController = navController
             )
         }
 
-        composable(Screen.NextDaysForecast.route) {}
+        composable(Screen.NextDaysForecast.route) {
+            NextDaysForecastScreen(
+                modifier = modifier
+            )
+        }
     }
 }
