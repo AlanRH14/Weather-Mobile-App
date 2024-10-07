@@ -1,4 +1,4 @@
-package com.example.weathermobileapp.presentation.screens
+package com.example.weathermobileapp.presentation.screens.weather
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
@@ -12,8 +12,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import androidx.navigation.NavController
 import com.example.weathermobileapp.data.local.mockdata.WeatherMockData.ErrorMock
-import com.example.weathermobileapp.presentation.widgets.DailyWeatherForecast
+import com.example.weathermobileapp.navigation.Screen
+import com.example.weathermobileapp.presentation.widgets.TomorrowWeatherForecast
 import com.example.weathermobileapp.presentation.widgets.WeatherHeader
 import com.example.weathermobileapp.presentation.widgets.HourlyWeatherForecast
 import com.example.weathermobileapp.presentation.widgets.ErrorMessageScreen
@@ -24,7 +26,8 @@ import com.example.weathermobileapp.ui.theme.GenericPadding.ScreenPadding
 @Composable
 fun WeatherScreen(
     modifier: Modifier = Modifier,
-    weatherVM: WeatherViewModel = hiltViewModel()
+    weatherVM: WeatherViewModel = hiltViewModel(),
+    navController: NavController,
 ) {
     val weatherData by weatherVM.state.collectAsStateWithLifecycle()
 
@@ -49,9 +52,11 @@ fun WeatherScreen(
             )
 
             weatherData.forecast?.let { forecast ->
-                HourlyWeatherForecast(forecast.hourlyWeather)
+                HourlyWeatherForecast(forecast.todayWeather)
 
-                DailyWeatherForecast(forecast.dailyWeather)
+                TomorrowWeatherForecast(forecast.tomorrowWeather) {
+                    navController.navigate(Screen.NextDaysForecast.route)
+                }
             }
         }
     }
