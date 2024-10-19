@@ -1,4 +1,4 @@
-package com.example.weathermobileapp.presentation.widgets
+package com.example.weathermobileapp.presentation.widgets.shimmers
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -12,11 +12,12 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.weathermobileapp.presentation.components.shimmerEffect
 import com.example.weathermobileapp.ui.theme.BackGroundColor
 import com.example.weathermobileapp.ui.theme.GenericPadding.ScreenPadding
-import com.example.weathermobileapp.ui.theme.VerySmallPadding
+import com.example.weathermobileapp.ui.theme.SmallPadding
 
 @Composable
 fun NextDaysForecastShimmer(
@@ -27,22 +28,23 @@ fun NextDaysForecastShimmer(
             .background(BackGroundColor)
             .fillMaxSize()
             .padding(ScreenPadding),
-        verticalArrangement = Arrangement.Center,
+        verticalArrangement = Arrangement.spacedBy(SmallPadding),
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         Box(
             modifier = Modifier
                 .width(200.dp)
-                .height(45.dp)
+                .height(65.dp)
+                .padding(SmallPadding)
                 .shimmerEffect()
         )
 
         repeat(8) {
             Box(
                 modifier = Modifier
-                    .height(45.dp)
                     .fillMaxWidth()
-                    .padding(VerySmallPadding)
+                    .height(45.dp)
+                    .padding(horizontal = SmallPadding)
                     .shimmerEffect()
             )
         }
@@ -50,18 +52,25 @@ fun NextDaysForecastShimmer(
         Box(
             modifier = Modifier
                 .width(200.dp)
-                .height(45.dp)
+                .height(65.dp)
+                .padding(SmallPadding)
                 .shimmerEffect()
         )
 
         repeat(8) {
             Box(
                 modifier = Modifier
-                    .height(45.dp)
                     .fillMaxWidth()
-                    .padding(VerySmallPadding)
+                    .height(45.dp)
+                    .padding(horizontal = SmallPadding)
                     .shimmerEffect()
             )
         }
     }
+}
+
+@Preview
+@Composable
+private fun NextDaysForecastShimmerPreview() {
+    NextDaysForecastShimmer()
 }

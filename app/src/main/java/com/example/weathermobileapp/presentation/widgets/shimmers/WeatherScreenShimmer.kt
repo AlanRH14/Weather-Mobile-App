@@ -1,4 +1,4 @@
-package com.example.weathermobileapp.presentation.widgets
+package com.example.weathermobileapp.presentation.widgets.shimmers
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -19,6 +19,7 @@ import com.example.weathermobileapp.ui.theme.BackGroundColor
 import com.example.weathermobileapp.ui.theme.GenericPadding.ScreenPadding
 import com.example.weathermobileapp.ui.theme.Shapes
 import com.example.weathermobileapp.ui.theme.SmallPadding
+import com.example.weathermobileapp.ui.theme.VeryLargePadding
 
 @Composable
 fun WeatherScreenShimmer(
@@ -33,15 +34,16 @@ fun WeatherScreenShimmer(
 
         Box(
             modifier = Modifier
-                .fillMaxWidth()
                 .height(455.dp)
+                .fillMaxWidth()
                 .padding(SmallPadding)
+                .clip(Shapes.medium)
                 .shimmerEffect()
         )
 
         Box(
             modifier = Modifier
-                .height(40.dp)
+                .height(65.dp)
                 .fillMaxWidth()
                 .padding(SmallPadding)
                 .shimmerEffect()
@@ -59,7 +61,6 @@ fun WeatherScreenShimmer(
                         .height(150.dp)
                         .weight(1F)
                         .clip(Shapes.small)
-                        .padding()
                         .shimmerEffect()
                 )
             }
@@ -72,16 +73,18 @@ fun WeatherScreenShimmer(
         ) {
             Box(
                 modifier = Modifier
-                    .height(30.dp)
-                    .weight(2F)
                     .fillMaxWidth()
+                    .height(50.dp)
+                    .weight(2F)
                     .shimmerEffect(),
             )
 
             Box(
                 modifier = Modifier
-                    .height(30.dp)
                     .fillMaxWidth()
+                    .weight(1F)
+                    .height(50.dp)
+                    .padding(end = VeryLargePadding)
                     .shimmerEffect(),
             )
         }
@@ -89,7 +92,7 @@ fun WeatherScreenShimmer(
         repeat(6) {
             Box(
                 modifier = Modifier
-                    .height(40.dp)
+                    .height(45.dp)
                     .fillMaxWidth()
                     .padding(SmallPadding)
                     .shimmerEffect(),

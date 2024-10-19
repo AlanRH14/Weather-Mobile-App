@@ -20,8 +20,8 @@ import com.example.weathermobileapp.data.local.mockdata.WeatherMockData.ErrorMoc
 import com.example.weathermobileapp.data.mappers.DayOfWeekMapper.getDayOfWeek
 import com.example.weathermobileapp.presentation.components.items.DailyWeatherItem
 import com.example.weathermobileapp.presentation.components.items.TitleDayOfWeekItem
-import com.example.weathermobileapp.presentation.widgets.ErrorMessageScreen
-import com.example.weathermobileapp.presentation.widgets.NextDaysForecastShimmer
+import com.example.weathermobileapp.presentation.screens.error.ErrorMessageScreen
+import com.example.weathermobileapp.presentation.widgets.shimmers.NextDaysForecastShimmer
 import com.example.weathermobileapp.ui.theme.BackGroundColor
 import com.example.weathermobileapp.ui.theme.GenericPadding.ScreenPadding
 
