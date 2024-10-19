@@ -18,8 +18,8 @@ import com.example.weathermobileapp.navigation.Screen
 import com.example.weathermobileapp.presentation.widgets.TomorrowWeatherForecast
 import com.example.weathermobileapp.presentation.widgets.WeatherHeader
 import com.example.weathermobileapp.presentation.widgets.HourlyWeatherForecast
-import com.example.weathermobileapp.presentation.widgets.ErrorMessageScreen
-import com.example.weathermobileapp.presentation.widgets.WeatherScreenShimmer
+import com.example.weathermobileapp.presentation.screens.error.ErrorMessageScreen
+import com.example.weathermobileapp.presentation.widgets.shimmers.WeatherScreenShimmer
 import com.example.weathermobileapp.ui.theme.BackGroundColor
 import com.example.weathermobileapp.ui.theme.GenericPadding.ScreenPadding
 

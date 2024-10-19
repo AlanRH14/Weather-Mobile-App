@@ -1,4 +1,4 @@
-package com.example.weathermobileapp.presentation.widgets
+package com.example.weathermobileapp.presentation.screens.error
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
