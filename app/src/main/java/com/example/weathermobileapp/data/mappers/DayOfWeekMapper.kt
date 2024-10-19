@@ -4,7 +4,7 @@ object DayOfWeekMapper {
     val getDayOfWeek = hashMapOf(
         "Sun" to "Sunday",
         "Mon" to "Monday",
-        "Tues" to "Tuesday",
+        "Tue" to "Tuesday",
         "Wed" to "Wednesday",
         "Thu" to "Thursday",
         "Fri" to "Friday",
