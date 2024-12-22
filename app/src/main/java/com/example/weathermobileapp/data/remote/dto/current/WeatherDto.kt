@@ -4,37 +4,37 @@ import com.example.weathermobileapp.data.remote.dto.Clouds
 import com.example.weathermobileapp.data.remote.dto.Coordinates
 import com.example.weathermobileapp.data.remote.dto.Weather
 import com.example.weathermobileapp.data.remote.dto.Wind
-import com.google.gson.annotations.SerializedName
+import com.squareup.moshi.Json
 
 data class WeatherDto(
-    @SerializedName("coord")
+    @Json(name = "coord")
     val coordinates: Coordinates? = null,
-    @SerializedName("weather")
+    @Json(name = "weather")
     val weather: List<Weather>? = null,
-    @SerializedName("base")
+    @Json(name = "base")
     val base: String? = null,
-    @SerializedName("main")
+    @Json(name = "main")
     val main: Main? = null,
-    @SerializedName("visibility")
+    @Json(name = "visibility")
     val visibility: Int? = null,
-    @SerializedName("wind")
+    @Json(name = "wind")
     val wind: Wind? = null,
-    @SerializedName("rain")
+    @Json(name = "rain")
     val rain: Rain? = null,
-    @SerializedName("snow")
+    @Json(name = "snow")
     val snow: Snow? = null,
-    @SerializedName("clouds")
+    @Json(name = "clouds")
     val clouds: Clouds? = null,
-    @SerializedName("dt")
+    @Json(name = "dt")
     val dt: Int? = null,
-    @SerializedName("sys")
+    @Json(name = "sys")
     val sys: Sys? = null,
-    @SerializedName("timezone")
+    @Json(name = "timezone")
     val timezone: Int? = null,
-    @SerializedName("id")
+    @Json(name = "id")
     val id: Int? = null,
-    @SerializedName("name")
+    @Json(name = "name")
     val name: String? = null,
-    @SerializedName("cod")
+    @Json(name = "cod")
     val cod: Int? = null,
 )

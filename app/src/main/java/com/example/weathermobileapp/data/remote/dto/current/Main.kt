@@ -1,22 +1,22 @@
 package com.example.weathermobileapp.data.remote.dto.current
 
-import com.google.gson.annotations.SerializedName
+import com.squareup.moshi.Json
 
 data class Main(
-    @SerializedName("temp")
+    @Json(name = "temp")
     val temp: Double? = null,
-    @SerializedName("feels_like")
+    @Json(name = "feels_like")
     val feelsLike: Double? = null,
-    @SerializedName("temp_min")
+    @Json(name = "temp_min")
     val tempMin: Double? = null,
-    @SerializedName("temp_max")
+    @Json(name = "temp_max")
     val tempMax: Double? = null,
-    @SerializedName("pressure")
+    @Json(name = "pressure")
     val pressure: Int? = null,
-    @SerializedName("humidity")
+    @Json(name = "humidity")
     val humidity: Int? = null,
-    @SerializedName("sea_level")
+    @Json(name = "sea_level")
     val seaLevel: Int? = null,
-    @SerializedName("grnd_level")
+    @Json(name = "grnd_level")
     val grandLevel: Int? = null,
 )

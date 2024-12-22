@@ -3,29 +3,29 @@ package com.example.weathermobileapp.data.remote.dto.forecast
 import com.example.weathermobileapp.data.remote.dto.Clouds
 import com.example.weathermobileapp.data.remote.dto.Weather
 import com.example.weathermobileapp.data.remote.dto.Wind
-import com.google.gson.annotations.SerializedName
+import com.squareup.moshi.Json
 
 data class Forecast(
-    @SerializedName("dt")
+    @Json(name = "dt")
     val dt: Int?,
-    @SerializedName("main")
+    @Json(name = "main")
     val main: Main?,
-    @SerializedName("weather")
+    @Json(name = "weather")
     val weather: List<Weather?>?,
-    @SerializedName("clouds")
+    @Json(name = "clouds")
     val clouds: Clouds?,
-    @SerializedName("wind")
+    @Json(name = "wind")
     val wind: Wind?,
-    @SerializedName("visibility")
+    @Json(name = "visibility")
     val visibility: Int?,
-    @SerializedName("pop")
+    @Json(name = "pop")
     val pop: Double?,
-    @SerializedName("rain")
+    @Json(name = "rain")
     val rain: Rain?,
-    @SerializedName("snow")
+    @Json(name = "snow")
     val snow: Snow? = null,
-    @SerializedName("sys")
+    @Json(name = "sys")
     val sys: Sys?,
-    @SerializedName("dt_txt")
+    @Json(name = "dt_txt")
     val dtTxt: String?,
 )

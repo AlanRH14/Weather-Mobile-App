@@ -1,16 +1,16 @@
 package com.example.weathermobileapp.data.remote.dto.current
 
-import com.google.gson.annotations.SerializedName
+import com.squareup.moshi.Json
 
 data class Sys(
-    @SerializedName("type")
+    @Json(name = "type")
     val type: Int? = null,
-    @SerializedName("id")
+    @Json(name = "id")
     val id: Int? = null,
-    @SerializedName("country")
+    @Json(name = "country")
     val country: String? = null,
-    @SerializedName("sunrise")
+    @Json(name = "sunrise")
     val sunrise: Int? = null,
-    @SerializedName("sunset")
+    @Json(name = "sunset")
     val sunset: Int? = null,
 )

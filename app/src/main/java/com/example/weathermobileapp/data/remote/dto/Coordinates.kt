@@ -1,10 +1,10 @@
 package com.example.weathermobileapp.data.remote.dto
 
-import com.google.gson.annotations.SerializedName
+import com.squareup.moshi.Json
 
 data class Coordinates(
-    @SerializedName("lat")
+    @Json(name = "lat")
     val lat: Double?,
-    @SerializedName("lon")
+    @Json(name = "lon")
     val lon: Double?
 )
