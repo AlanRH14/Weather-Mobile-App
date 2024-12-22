@@ -78,8 +78,5 @@ dependencies {
     implementation(libs.retrofit)
     implementation(libs.moshi.converter)
     implementation(libs.moshi.kotlin)
-    implementation(libs.converter.gson)
-    implementation(libs.converter.serialization)
-    implementation(libs.serialization)
     implementation(libs.okhttp)
 }
