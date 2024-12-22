@@ -1,8 +1,8 @@
 package com.example.weathermobileapp.data.remote.dto.forecast
 
-import com.google.gson.annotations.SerializedName
+import com.squareup.moshi.Json
 
 data class Sys(
-    @SerializedName("pod")
+    @Json(name = "pod")
     val pod: String?
 )

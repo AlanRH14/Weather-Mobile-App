@@ -1,12 +1,12 @@
 package com.example.weathermobileapp.data.remote.dto
 
-import com.google.gson.annotations.SerializedName
+import com.squareup.moshi.Json
 
 data class Wind(
-    @SerializedName("speed")
+    @Json(name = "speed")
     val speed: Double? = null,
-    @SerializedName("deg")
+    @Json(name = "deg")
     val deg: Int? = null,
-    @SerializedName("gust")
+    @Json(name = "gust")
     val gust: Double? = null,
 )
