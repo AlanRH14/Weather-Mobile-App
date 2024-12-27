@@ -1,16 +1,18 @@
 package com.example.weathermobileapp.data.remote.dto.forecast
 
-import com.squareup.moshi.Json
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
+@Serializable
 data class ForecastDto(
-    @Json(name = "cod")
+    @SerialName(value = "cod")
     val cod: String?,
-    @Json(name = "message")
+    @SerialName(value = "message")
     val message: Int?,
-    @Json(name = "cnt")
+    @SerialName(value = "cnt")
     val cnt: Int?,
-    @Json(name = "list")
+    @SerialName(value = "list")
     val forecasts: List<Forecast?>?,
-    @Json(name = "city")
+    @SerialName(value = "city")
     val city: City?,
 )

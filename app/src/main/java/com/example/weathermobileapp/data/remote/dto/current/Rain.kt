@@ -1,8 +1,10 @@
 package com.example.weathermobileapp.data.remote.dto.current
 
-import com.squareup.moshi.Json
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
+@Serializable
 data class Rain(
-    @Json(name = "1h")
+    @SerialName(value = "1h")
     val h: Double? = null
 )

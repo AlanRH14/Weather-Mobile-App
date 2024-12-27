@@ -1,7 +1,9 @@
 package com.example.weathermobileapp.data.remote.dto
 
-import com.squareup.moshi.Json
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
+@Serializable
 data class Clouds(
-    @Json(name = "all") val all: Int?
+    @SerialName(value = "all") val all: Int?
 )
