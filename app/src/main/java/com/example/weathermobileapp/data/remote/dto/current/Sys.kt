@@ -1,16 +1,18 @@
 package com.example.weathermobileapp.data.remote.dto.current
 
-import com.squareup.moshi.Json
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
+@Serializable
 data class Sys(
-    @Json(name = "type")
+    @SerialName(value = "type")
     val type: Int? = null,
-    @Json(name = "id")
+    @SerialName(value = "id")
     val id: Int? = null,
-    @Json(name = "country")
+    @SerialName(value = "country")
     val country: String? = null,
-    @Json(name = "sunrise")
+    @SerialName(value = "sunrise")
     val sunrise: Int? = null,
-    @Json(name = "sunset")
+    @SerialName(value = "sunset")
     val sunset: Int? = null,
 )

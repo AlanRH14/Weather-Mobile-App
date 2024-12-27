@@ -1,10 +1,12 @@
 package com.example.weathermobileapp.data.remote.dto
 
-import com.squareup.moshi.Json
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
+@Serializable
 data class Coordinates(
-    @Json(name = "lat")
+    @SerialName(value = "lat")
     val lat: Double?,
-    @Json(name = "lon")
+    @SerialName(value = "lon")
     val lon: Double?
 )

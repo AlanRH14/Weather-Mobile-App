@@ -1,8 +1,10 @@
 package com.example.weathermobileapp.data.remote.dto.forecast
 
-import com.squareup.moshi.Json
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
+@Serializable
 data class Sys(
-    @Json(name = "pod")
+    @SerialName(value = "pod")
     val pod: String?
 )

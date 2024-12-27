@@ -1,12 +1,14 @@
 package com.example.weathermobileapp.data.remote.dto
 
-import com.squareup.moshi.Json
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
+@Serializable
 data class Wind(
-    @Json(name = "speed")
+    @SerialName(value = "speed")
     val speed: Double? = null,
-    @Json(name = "deg")
+    @SerialName(value = "deg")
     val deg: Int? = null,
-    @Json(name = "gust")
+    @SerialName(value = "gust")
     val gust: Double? = null,
 )
