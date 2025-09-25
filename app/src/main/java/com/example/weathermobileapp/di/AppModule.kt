@@ -7,8 +7,6 @@ import com.example.weathermobileapp.presentation.screens.next_days_forecast.Fore
 import com.example.weathermobileapp.presentation.screens.weather.WeatherViewModel
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
-import kotlinx.serialization.json.Json
-import okhttp3.MediaType.Companion.toMediaType
 import org.koin.core.module.dsl.viewModel
 import org.koin.dsl.module
 
