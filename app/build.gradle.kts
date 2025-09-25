@@ -66,6 +66,8 @@ dependencies {
 
     implementation(libs.play.services.location)
 
+    implementation(libs.koin.android)
+
     implementation(libs.hilt.androidx.navigation.compose)
     implementation(libs.hilt.android)
     ksp(libs.hilt.android.compiler)
