@@ -67,6 +67,7 @@ dependencies {
     implementation(libs.play.services.location)
 
     implementation(libs.koin.android)
+    implementation(libs.koin.androidx.compose)
 
     implementation(libs.hilt.androidx.navigation.compose)
     implementation(libs.hilt.android)
