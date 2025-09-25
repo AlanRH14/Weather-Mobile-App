@@ -1,8 +1,10 @@
 package com.example.weathermobileapp.di
 
 import android.app.Application
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.weathermobileapp.data.remote.api.ApiConfig.BASE_URL
 import com.example.weathermobileapp.data.remote.api.WeatherApi
+import com.example.weathermobileapp.presentation.screens.next_days_forecast.ForecastViewModel
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import dagger.Module
@@ -11,12 +13,14 @@ import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import kotlinx.serialization.json.Json
 import okhttp3.MediaType.Companion.toMediaType
+import org.koin.core.module.dsl.viewModel
 import org.koin.dsl.module
 import retrofit2.Retrofit
 import retrofit2.converter.kotlinx.serialization.asConverterFactory
 import javax.inject.Singleton
 
-val  appModule = module {
+val appModule = module {
+    viewModel { ForecastViewModel(repository = get(), locationTracker = get()) }
 
     fun providesWeatherApi(): WeatherApi {
         val contentType = "application/json".toMediaType()
