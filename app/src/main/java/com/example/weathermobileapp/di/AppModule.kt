@@ -7,8 +7,6 @@ import com.example.weathermobileapp.presentation.screens.next_days_forecast.Fore
 import com.example.weathermobileapp.presentation.screens.weather.WeatherViewModel
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
-import dagger.Module
-import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import kotlinx.serialization.json.Json
