@@ -15,8 +15,6 @@ import retrofit2.Retrofit
 import retrofit2.converter.kotlinx.serialization.asConverterFactory
 import javax.inject.Singleton
 
-@Module
-@InstallIn(SingletonComponent::class)
 object AppModule {
 
     @Provides
