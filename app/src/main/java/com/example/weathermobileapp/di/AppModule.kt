@@ -1,7 +1,6 @@
 package com.example.weathermobileapp.di
 
 import android.app.Application
-import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.weathermobileapp.data.remote.api.ApiConfig.BASE_URL
 import com.example.weathermobileapp.data.remote.api.WeatherApi
 import com.example.weathermobileapp.presentation.screens.next_days_forecast.ForecastViewModel
