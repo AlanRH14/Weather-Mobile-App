@@ -10,9 +10,8 @@ import com.example.weathermobileapp.domain.models.WeatherModel
 import com.example.weathermobileapp.domain.repository.WeatherRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
-import javax.inject.Inject
 
-class WeatherRepositoryImpl @Inject constructor(
+class WeatherRepositoryImpl(
     private val api: WeatherApi,
 ) : WeatherRepository {
 
