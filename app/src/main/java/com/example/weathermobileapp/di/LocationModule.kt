@@ -9,6 +9,10 @@ import org.koin.android.ext.koin.androidContext
 import org.koin.dsl.module
 
 val locationModule = module {
+    single<FusedLocationProviderClient> {
+        LocationServices.getFusedLocationProviderClient(androidContext())
+    }
+
     single<LocationTracker> {
         LocationTrackerImpl(
             locationClient = get(),
