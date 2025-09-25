@@ -65,9 +65,11 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+
     ksp(libs.hilt.android.compiler)
     implementation(libs.hilt.androidx.navigation.compose)
     implementation(libs.hilt.android)
+
     implementation(libs.room.android)
     annotationProcessor(libs.androidx.room.compiler)
     ksp(libs.androidx.room.compiler)
