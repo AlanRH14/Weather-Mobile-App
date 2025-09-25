@@ -15,9 +15,7 @@ import androidx.compose.ui.Modifier
 import com.example.weathermobileapp.navigation.AppNavHost
 import com.example.weathermobileapp.presentation.screens.weather.WeatherViewModel
 import com.example.weathermobileapp.ui.theme.WeatherMobileAppTheme
-import dagger.hilt.android.AndroidEntryPoint
 
-@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     private val viewModel: WeatherViewModel by viewModels()
     private lateinit var permissionLauncher: ActivityResultLauncher<Array<String>>
