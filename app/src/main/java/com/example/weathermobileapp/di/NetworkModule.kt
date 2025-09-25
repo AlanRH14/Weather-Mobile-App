@@ -1,10 +1,16 @@
 package com.example.weathermobileapp.di
 
 import com.example.weathermobileapp.data.remote.api.ApiConfig.BASE_URL
+import kotlinx.serialization.json.Json
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.dsl.module
 import retrofit2.Retrofit
+
+private val json = Json {
+    coerceInputValues = true
+    ignoreUnknownKeys = true
+}
 
 val networkModule = module {
     single {
