@@ -2,6 +2,7 @@ package com.example.weathermobileapp
 
 import android.app.Application
 import com.example.weathermobileapp.di.networkModule
+import com.example.weathermobileapp.di.repositoryModule
 import org.koin.core.context.startKoin
 
 class WeatherApplication : Application() {
@@ -12,6 +13,7 @@ class WeatherApplication : Application() {
         startKoin {
             modules(
                 networkModule,
+                repositoryModule,
             )
         }
     }
