@@ -1,6 +1,7 @@
 package com.example.weathermobileapp
 
 import android.app.Application
+import com.example.weathermobileapp.di.appModule
 import com.example.weathermobileapp.di.locationModule
 import com.example.weathermobileapp.di.networkModule
 import com.example.weathermobileapp.di.repositoryModule
@@ -15,7 +16,8 @@ class WeatherApplication : Application() {
             modules(
                 networkModule,
                 repositoryModule,
-                locationModule
+                locationModule,
+                appModule,
             )
         }
     }
