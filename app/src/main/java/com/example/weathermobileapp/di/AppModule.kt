@@ -17,16 +17,6 @@ import retrofit2.converter.kotlinx.serialization.asConverterFactory
 val appModule = module {
     viewModel { ForecastViewModel(repository = get(), locationTracker = get()) }
     viewModel { WeatherViewModel(repository = get(), locationTracker = get()) }
-    fun providesWeatherApi(): WeatherApi {
-        val contentType = "application/json".toMediaType()
-        return Retrofit.Builder()
-            .addConverterFactory(
-                Json.asConverterFactory(contentType)
-            )
-            .baseUrl(BASE_URL)
-            .build()
-            .create(WeatherApi::class.java)
-    }
 
     fun provideFusedLocationProviderClient(app: Application): FusedLocationProviderClient {
         return LocationServices.getFusedLocationProviderClient(app)
