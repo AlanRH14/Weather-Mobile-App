@@ -11,8 +11,4 @@ import org.koin.dsl.module
 val appModule = module {
     viewModel { ForecastViewModel(repository = get(), locationTracker = get()) }
     viewModel { WeatherViewModel(repository = get(), locationTracker = get()) }
-
-    fun provideFusedLocationProviderClient(app: Application): FusedLocationProviderClient {
-        return LocationServices.getFusedLocationProviderClient(app)
-    }
 }
