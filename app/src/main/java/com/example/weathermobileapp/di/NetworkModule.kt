@@ -1,19 +1,28 @@
 package com.example.weathermobileapp.di
 
 import com.example.weathermobileapp.data.remote.api.ApiConfig.BASE_URL
+import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.dsl.module
 import retrofit2.Retrofit
 
 val networkModule = module {
     single {
         HttpLoggingInterceptor().apply {
-
+            level = HttpLoggingInterceptor.Level.BODY
         }
     }
+
+    single {
+        OkHttpClient.Builder()
+            .addInterceptor(get<HttpLoggingInterceptor>())
+            .build()
+    }
+
     single {
         Retrofit.Builder()
             .baseUrl(BASE_URL)
-            .client()
+            .client(get<OkHttpClient>())
             .addConverterFactory()
             .build()
     }
