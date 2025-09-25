@@ -78,7 +78,6 @@ dependencies {
     ksp(libs.androidx.room.compiler)
 
     implementation(libs.retrofit)
-    implementation(libs.okhttp)
 
     implementation(libs.kotlin.serialization)
     implementation(libs.kotlinx.serialization.json)
