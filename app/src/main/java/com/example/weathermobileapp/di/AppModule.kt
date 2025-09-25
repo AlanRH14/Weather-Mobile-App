@@ -11,11 +11,12 @@ import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import kotlinx.serialization.json.Json
 import okhttp3.MediaType.Companion.toMediaType
+import org.koin.dsl.module
 import retrofit2.Retrofit
 import retrofit2.converter.kotlinx.serialization.asConverterFactory
 import javax.inject.Singleton
 
-object AppModule {
+val  AppModule = module {
 
     fun providesWeatherApi(): WeatherApi {
         val contentType = "application/json".toMediaType()
