@@ -56,8 +56,6 @@ dependencies {
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
     implementation(libs.androidx.compose.icons.extended)
-
-    implementation(libs.play.services.location)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -65,15 +63,24 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
-    ksp(libs.hilt.android.compiler)
+
+    implementation(libs.play.services.location)
+
+    implementation(libs.koin.android)
+    implementation(libs.koin.androidx.compose)
+
     implementation(libs.hilt.androidx.navigation.compose)
     implementation(libs.hilt.android)
+    ksp(libs.hilt.android.compiler)
+
     implementation(libs.room.android)
     annotationProcessor(libs.androidx.room.compiler)
     ksp(libs.androidx.room.compiler)
+
     implementation(libs.retrofit)
+    implementation(libs.okhttp)
+
     implementation(libs.kotlin.serialization)
     implementation(libs.kotlinx.serialization.json)
     implementation(libs.retrofit.converter.kotlinx.serialization)
-    implementation(libs.okhttp)
 }
