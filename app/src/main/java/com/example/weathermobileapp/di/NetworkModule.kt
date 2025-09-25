@@ -1,6 +1,7 @@
 package com.example.weathermobileapp.di
 
 import com.example.weathermobileapp.data.remote.api.ApiConfig.BASE_URL
+import com.example.weathermobileapp.data.remote.api.WeatherApi
 import kotlinx.serialization.json.Json
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
@@ -35,5 +36,9 @@ val networkModule = module {
             .client(get<OkHttpClient>())
             .addConverterFactory(json.asConverterFactory(contentType))
             .build()
+    }
+
+    single {
+        get<Retrofit>().create(WeatherApi::class.java)
     }
 }
