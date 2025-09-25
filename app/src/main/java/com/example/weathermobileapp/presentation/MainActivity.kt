@@ -22,6 +22,8 @@ class MainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        enableEdgeToEdge()
+
         permissionLauncher = registerForActivityResult(
             ActivityResultContracts.RequestMultiplePermissions()
         ) {
@@ -35,7 +37,6 @@ class MainActivity : ComponentActivity() {
             )
         )
 
-        enableEdgeToEdge()
         setContent {
             WeatherMobileAppTheme {
                 Scaffold(
