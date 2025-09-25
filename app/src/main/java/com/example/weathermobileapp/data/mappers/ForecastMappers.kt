@@ -10,9 +10,9 @@ fun List<Forecast?>?.toForecastWeathers(): WeatherForecast {
     return WeatherForecast(
         todayWeather = this?.filter { forecast -> forecast?.dt?.isToday() ?: false }
             .toHourlyWeathers(),
-        tomorrowWeather = this?.filter { forecast -> forecast?.dt?.isTomorrow() ?: false }
+        tomorrowWeather = this?.filter { forecast -> forecast?.dt.isTomorrow() }
             .toDailyWeathers(),
-        nextDayWeather = this?.filter { forecast -> forecast?.dt.isNextDays() ?: false }
+        nextDayWeather = this?.filter { forecast -> forecast?.dt.isNextDays() }
             .toDailyWeathers()
     )
 }
