@@ -76,8 +76,8 @@ dependencies {
 
     implementation(libs.retrofit)
     implementation(libs.okhttp)
-    implementation(libs.retrofit.converter.kotlinx.serialization)
 
     implementation(libs.kotlin.serialization)
     implementation(libs.kotlinx.serialization.json)
+    implementation(libs.retrofit.converter.kotlinx.serialization)
 }
