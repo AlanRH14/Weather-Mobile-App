@@ -17,8 +17,6 @@ import javax.inject.Singleton
 
 object AppModule {
 
-    @Provides
-    @Singleton
     fun providesWeatherApi(): WeatherApi {
         val contentType = "application/json".toMediaType()
         return Retrofit.Builder()
