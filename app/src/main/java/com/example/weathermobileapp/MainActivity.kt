@@ -1,7 +1,7 @@
-package com.example.weathermobileapp.presentation
+package com.example.weathermobileapp
 
 import android.Manifest
-import  android.os.Bundle
+import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
@@ -40,11 +40,11 @@ class MainActivity : ComponentActivity() {
         setContent {
             WeatherMobileAppTheme {
                 Scaffold(
-                    modifier = Modifier
+                    modifier = Modifier.Companion
                         .fillMaxSize()
                 ) { innerPadding ->
                     AppNavHost(
-                        modifier = Modifier.padding(innerPadding),
+                        modifier = Modifier.Companion.padding(innerPadding),
                         weatherVM = viewModel
                     )
                 }
