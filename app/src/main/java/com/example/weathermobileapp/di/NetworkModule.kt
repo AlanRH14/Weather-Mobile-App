@@ -7,6 +7,7 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.dsl.module
 import retrofit2.Retrofit
+import retrofit2.converter.kotlinx.serialization.asConverterFactory
 
 private val json = Json {
     coerceInputValues = true
@@ -32,7 +33,7 @@ val networkModule = module {
         Retrofit.Builder()
             .baseUrl(BASE_URL)
             .client(get<OkHttpClient>())
-            .addConverterFactory()
+            .addConverterFactory(json.asConverterFactory(contentType))
             .build()
     }
 }
