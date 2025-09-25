@@ -34,8 +34,6 @@ val appModule = module {
             .create(WeatherApi::class.java)
     }
 
-    @Provides
-    @Singleton
     fun provideFusedLocationProviderClient(app: Application): FusedLocationProviderClient {
         return LocationServices.getFusedLocationProviderClient(app)
     }
