@@ -11,7 +11,5 @@ import javax.inject.Singleton
 
 abstract class LocationModule {
 
-    @Binds
-    @Singleton
     abstract fun bindLocationTracker(defaultLocationTracker: LocationTrackerImpl): LocationTracker
 }
