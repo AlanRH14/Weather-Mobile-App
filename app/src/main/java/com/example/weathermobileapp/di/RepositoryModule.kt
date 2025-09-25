@@ -9,9 +9,6 @@ import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
 abstract class RepositoryModule {
-
-    @Binds
-    @Singleton
     abstract fun bindWeatherRepository(
         repositoryImpl: WeatherRepositoryImpl
     ): WeatherRepository
