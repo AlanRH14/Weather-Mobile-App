@@ -13,7 +13,6 @@ import org.koin.core.module.dsl.viewModel
 import org.koin.dsl.module
 import retrofit2.Retrofit
 import retrofit2.converter.kotlinx.serialization.asConverterFactory
-import javax.inject.Singleton
 
 val appModule = module {
     viewModel { ForecastViewModel(repository = get(), locationTracker = get()) }
