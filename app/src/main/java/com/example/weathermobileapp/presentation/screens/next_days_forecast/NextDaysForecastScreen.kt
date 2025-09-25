@@ -14,7 +14,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.example.weathermobileapp.data.local.mockdata.WeatherMockData.ErrorMock
 import com.example.weathermobileapp.data.mappers.DayOfWeekMapper.getDayOfWeek
@@ -24,11 +23,12 @@ import com.example.weathermobileapp.presentation.screens.error.ErrorMessageScree
 import com.example.weathermobileapp.presentation.widgets.shimmers.NextDaysForecastShimmer
 import com.example.weathermobileapp.ui.theme.BackGroundColor
 import com.example.weathermobileapp.ui.theme.GenericPadding.ScreenPadding
+import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun NextDaysForecastScreen(
     modifier: Modifier = Modifier,
-    forecastVM: ForecastViewModel = hiltViewModel(),
+    forecastVM: ForecastViewModel = koinViewModel(),
 ) {
     var dayOfWeek by remember { mutableStateOf("") }
     val state by forecastVM.state.collectAsStateWithLifecycle()

@@ -2,19 +2,21 @@ package com.example.weathermobileapp.di
 
 import com.example.weathermobileapp.data.location.LocationTrackerImpl
 import com.example.weathermobileapp.domain.location.LocationTracker
-import dagger.Binds
-import dagger.Module
-import dagger.hilt.InstallIn
-import dagger.hilt.components.SingletonComponent
-import kotlinx.coroutines.ExperimentalCoroutinesApi
-import javax.inject.Singleton
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationServices
+import org.koin.android.ext.koin.androidApplication
+import org.koin.android.ext.koin.androidContext
+import org.koin.dsl.module
 
-@ExperimentalCoroutinesApi
-@Module
-@InstallIn(SingletonComponent::class)
-abstract class LocationModule {
+val locationModule = module {
+    single<FusedLocationProviderClient> {
+        LocationServices.getFusedLocationProviderClient(androidContext())
+    }
 
-    @Binds
-    @Singleton
-    abstract fun bindLocationTracker(defaultLocationTracker: LocationTrackerImpl): LocationTracker
+    single<LocationTracker> {
+        LocationTrackerImpl(
+            locationClient = get(),
+            application = androidApplication()
+        )
+    }
 }
