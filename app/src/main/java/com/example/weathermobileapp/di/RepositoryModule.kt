@@ -2,8 +2,9 @@ package com.example.weathermobileapp.di
 
 import com.example.weathermobileapp.data.repository.WeatherRepositoryImpl
 import com.example.weathermobileapp.domain.repository.WeatherRepository
+import org.koin.dsl.module
 
-abstract class RepositoryModule {
+val repositoryModule = module {
     abstract fun bindWeatherRepository(
         repositoryImpl: WeatherRepositoryImpl
     ): WeatherRepository
