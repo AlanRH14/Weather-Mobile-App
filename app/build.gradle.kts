@@ -77,6 +77,7 @@ dependencies {
     annotationProcessor(libs.androidx.room.compiler)
     ksp(libs.androidx.room.compiler)
 
+    implementation(libs.logging.interceptor)
     implementation(libs.retrofit)
 
     implementation(libs.kotlin.serialization)
