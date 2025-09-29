@@ -29,7 +29,6 @@ fun NextDaysForecastScreen(
     modifier: Modifier = Modifier,
     forecastVM: ForecastViewModel = koinViewModel(),
 ) {
-    var dayOfWeek by remember { mutableStateOf("") }
     val state by forecastVM.state.collectAsStateWithLifecycle()
 
     LaunchedEffect(key1 = true) {
@@ -51,7 +50,9 @@ fun NextDaysForecastScreen(
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
             items(items = nextDayWeather) { forecast ->
+                println("LordMiau Day: ${forecast.day}")
                 if (forecast.day != dayOfWeek) {
+                    println("LordMiau Day2: ${forecast.day}")
                     getDayOfWeek[forecast.day]?.let { day ->
                         TitleDayOfWeekItem(day)
                     }
