@@ -1,5 +1,7 @@
 package com.example.weathermobileapp.presentation.screens.weather
 
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -32,6 +34,12 @@ fun WeatherScreen(
     navController: NavController,
 ) {
     val weatherData by weatherVM.state.collectAsStateWithLifecycle()
+    val permissionLauncher = rememberLauncherForActivityResult(
+        contract = ActivityResultContracts.RequestMultiplePermissions()
+    ) { permissions ->
+
+
+    }
 
     LaunchedEffect(key1 = true) {
         weatherVM.onEvent(WeatherUIEvent.OnGetWeather)
