@@ -15,7 +15,7 @@ class WeatherRepositoryImpl(
     private val api: WeatherApi,
 ) : WeatherRepository {
 
-    override suspend fun getWeatherData(lat: Double, lon: Double): Flow<ResultApi<WeatherModel>> =
+    override fun getWeatherData(lat: Double, lon: Double): Flow<ResultApi<WeatherModel>> =
         flow {
             emit(ResultApi.Loading)
             try {
