@@ -5,8 +5,10 @@ import androidx.lifecycle.viewModelScope
 import com.example.weathermobileapp.domain.ResultApi
 import com.example.weathermobileapp.domain.location.LocationTracker
 import com.example.weathermobileapp.domain.repository.WeatherRepository
+import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
@@ -17,6 +19,9 @@ class ForecastViewModel(
 
     private val _state = MutableStateFlow(NextDaysForecastState())
     val state: StateFlow<NextDaysForecastState> get() = _state
+
+    private val _effect = MutableSharedFlow<NextDaysForecastEffect>()
+    val effect = _effect.asSharedFlow()
 
     fun getWeatherForecastData() {
         viewModelScope.launch {
