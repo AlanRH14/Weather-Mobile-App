@@ -1,7 +1,6 @@
 package com.example.weathermobileapp.presentation.screens.next_days_forecast
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
