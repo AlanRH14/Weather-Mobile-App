@@ -50,8 +50,7 @@ fun NextDaysForecastScreen(
             modifier = modifier
                 .background(BackGroundColor)
                 .fillMaxSize()
-                .padding(ScreenPadding)
-                .verticalScroll(rememberScrollState()),
+                .padding(ScreenPadding),
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
 
