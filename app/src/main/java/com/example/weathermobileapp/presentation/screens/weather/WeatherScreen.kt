@@ -85,9 +85,10 @@ fun WeatherScreen(
             weatherData.forecast?.let { forecast ->
                 HourlyWeatherForecast(forecast.todayWeather)
 
-                TomorrowWeatherForecast(forecast.tomorrowWeather) {
-
-                }
+                TomorrowWeatherForecast(
+                    forecastTomorrow = forecast.tomorrowWeather,
+                    onEvent = weatherVM::onEvent
+                )
             }
         }
     }
