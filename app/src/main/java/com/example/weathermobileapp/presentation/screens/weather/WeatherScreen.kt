@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -21,6 +22,7 @@ import com.example.weathermobileapp.presentation.screens.error.ErrorMessageScree
 import com.example.weathermobileapp.presentation.widgets.shimmers.WeatherScreenShimmer
 import com.example.weathermobileapp.ui.theme.BackGroundColor
 import com.example.weathermobileapp.ui.theme.GenericPadding.ScreenPadding
+import kotlinx.coroutines.flow.collectLatest
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
@@ -30,6 +32,13 @@ fun WeatherScreen(
     navController: NavController,
 ) {
     val weatherData by weatherVM.state.collectAsStateWithLifecycle()
+
+    LaunchedEffect(key1 = true) {
+        weatherVM.onEvent(WeatherUIEvent.OnGetWeather)
+        weatherVM.effect.collectLatest {
+
+        }
+    }
 
     if (weatherData.isLoading) {
         WeatherScreenShimmer(modifier = modifier)
