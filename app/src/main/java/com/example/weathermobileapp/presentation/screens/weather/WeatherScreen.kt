@@ -53,8 +53,12 @@ fun WeatherScreen(
         permissionLauncher.launch(
             arrayOf(ACCESS_FINE_LOCATION, ACCESS_COARSE_LOCATION)
         )
-        weatherVM.effect.collectLatest {
-
+        weatherVM.effect.collectLatest { effect ->
+            when (effect) {
+                is WeatherEffect.NavigateToNextDaysForecast -> {
+                    navController.navigate(Screen.NextDaysForecast.route)
+                }
+            }
         }
     }
 
@@ -82,7 +86,7 @@ fun WeatherScreen(
                 HourlyWeatherForecast(forecast.todayWeather)
 
                 TomorrowWeatherForecast(forecast.tomorrowWeather) {
-                    navController.navigate(Screen.NextDaysForecast.route)
+
                 }
             }
         }
