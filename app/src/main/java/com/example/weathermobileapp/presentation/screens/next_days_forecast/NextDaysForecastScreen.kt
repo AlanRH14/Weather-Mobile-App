@@ -32,7 +32,7 @@ fun NextDaysForecastScreen(
     var dayOfWeek by remember { mutableStateOf("") }
     val state by forecastVM.state.collectAsStateWithLifecycle()
 
-    LaunchedEffect(Unit) {
+    LaunchedEffect(key1 = true) {
         forecastVM.onEvent(NextDaysForecastUIEvent.OnGetWeatherForecastData)
     }
 
