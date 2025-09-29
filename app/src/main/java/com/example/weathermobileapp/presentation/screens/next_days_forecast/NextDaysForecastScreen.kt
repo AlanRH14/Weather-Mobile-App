@@ -56,7 +56,7 @@ fun NextDaysForecastScreen(
                     getDayOfWeek[forecast.day]?.let { day ->
                         TitleDayOfWeekItem(day)
                     }
-                    //dayOfWeek = forecast.day
+                    forecastVM.onEvent(event = NextDaysForecastUIEvent.OnDayOfWeekUpdate(dayOfWeek = forecast.day))
                 }
                 DailyWeatherItem(forecast)
             }
