@@ -8,5 +8,5 @@ import kotlinx.coroutines.flow.Flow
 interface WeatherRepository {
     suspend fun getWeatherData(lat:Double, lon: Double): Flow<ResultApi<WeatherModel>>
 
-    suspend fun getWeatherForecastData(lat: Double, lon: Double): Flow<ResultApi<WeatherForecast>>
+    fun getWeatherForecastData(lat: Double, lon: Double): Flow<ResultApi<WeatherForecast>>
 }
