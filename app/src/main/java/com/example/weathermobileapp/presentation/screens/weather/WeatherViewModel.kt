@@ -23,6 +23,10 @@ class WeatherViewModel(
     private val _effect = MutableSharedFlow<WeatherEffect>()
     val effect = _effect.asSharedFlow()
 
+    fun onEvnet(event: WeatherUIEvent) {
+
+    }
+
     fun getWeatherData() {
         viewModelScope.launch {
             _state.value = _state.value.copy(isLoading = true)
