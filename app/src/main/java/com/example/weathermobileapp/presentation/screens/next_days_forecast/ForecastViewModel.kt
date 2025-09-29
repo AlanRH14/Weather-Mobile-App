@@ -5,8 +5,11 @@ import androidx.lifecycle.viewModelScope
 import com.example.weathermobileapp.domain.ResultApi
 import com.example.weathermobileapp.domain.location.LocationTracker
 import com.example.weathermobileapp.domain.repository.WeatherRepository
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
@@ -14,12 +17,21 @@ class ForecastViewModel(
     private val repository: WeatherRepository,
     private val locationTracker: LocationTracker,
 ) : ViewModel() {
-
     private val _state = MutableStateFlow(NextDaysForecastState())
     val state: StateFlow<NextDaysForecastState> get() = _state
 
-    fun getWeatherForecastData() {
-        viewModelScope.launch {
+    private val _effect = MutableSharedFlow<NextDaysForecastEffect>()
+    val effect = _effect.asSharedFlow()
+
+    fun onEvent(event: NextDaysForecastUIEvent) {
+        when (event) {
+            is NextDaysForecastUIEvent.OnGetWeatherForecastData -> getWeatherForecastData()
+            is NextDaysForecastUIEvent.OnDayOfWeekUpdate -> dayOfWeekUpdate(dayOfWeek = event.dayOfWeek)
+        }
+    }
+
+    private fun getWeatherForecastData() {
+        viewModelScope.launch(Dispatchers.IO) {
             locationTracker.getCurrentLocation()?.let { location ->
                 repository.getWeatherForecastData(lat = location.latitude, lon = location.longitude)
                     .collect { forecastData ->
@@ -49,5 +61,9 @@ class ForecastViewModel(
                     }
             }
         }
+    }
+
+    private fun dayOfWeekUpdate(dayOfWeek: String) {
+        _state.update { it.copy(dayOfWeek = dayOfWeek) }
     }
 }

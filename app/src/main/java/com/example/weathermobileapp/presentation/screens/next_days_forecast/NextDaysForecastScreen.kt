@@ -1,17 +1,13 @@
 package com.example.weathermobileapp.presentation.screens.next_days_forecast
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.verticalScroll
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -30,11 +26,10 @@ fun NextDaysForecastScreen(
     modifier: Modifier = Modifier,
     forecastVM: ForecastViewModel = koinViewModel(),
 ) {
-    var dayOfWeek by remember { mutableStateOf("") }
     val state by forecastVM.state.collectAsStateWithLifecycle()
 
-    LaunchedEffect(Unit) {
-        forecastVM.getWeatherForecastData()
+    LaunchedEffect(key1 = true) {
+        forecastVM.onEvent(NextDaysForecastUIEvent.OnGetWeatherForecastData)
     }
 
     if (state.isLoading) {
@@ -44,16 +39,17 @@ fun NextDaysForecastScreen(
     }
 
     state.forecast?.nextDayWeather?.let { nextDayWeather ->
-        Column(
+        var dayOfWeek = ""
+        LazyColumn(
             modifier = modifier
                 .background(BackGroundColor)
                 .fillMaxSize()
-                .padding(ScreenPadding)
-                .verticalScroll(rememberScrollState()),
+                .padding(ScreenPadding),
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
-            nextDayWeather.forEach { forecast ->
+            items(items = nextDayWeather) { forecast ->
                 if (forecast.day != dayOfWeek) {
+                    println("LordMiau Day2: ${forecast.day}")
                     getDayOfWeek[forecast.day]?.let { day ->
                         TitleDayOfWeekItem(day)
                     }

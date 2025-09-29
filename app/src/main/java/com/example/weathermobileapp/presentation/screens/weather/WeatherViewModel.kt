@@ -5,6 +5,9 @@ import androidx.lifecycle.viewModelScope
 import com.example.weathermobileapp.domain.ResultApi
 import com.example.weathermobileapp.domain.location.LocationTracker
 import com.example.weathermobileapp.domain.repository.WeatherRepository
+import com.example.weathermobileapp.presentation.screens.weather.mvi.WeatherEffect
+import com.example.weathermobileapp.presentation.screens.weather.mvi.WeatherState
+import com.example.weathermobileapp.presentation.screens.weather.mvi.WeatherUIEvent
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
