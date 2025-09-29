@@ -18,7 +18,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
 
-        permissionLauncher = registerForActivityResult(
+        /*permissionLauncher = registerForActivityResult(
             ActivityResultContracts.RequestMultiplePermissions()
         ) {
             viewModel.getWeatherData()
@@ -29,7 +29,7 @@ class MainActivity : ComponentActivity() {
                 Manifest.permission.ACCESS_FINE_LOCATION,
                 Manifest.permission.ACCESS_COARSE_LOCATION,
             )
-        )
+        )*/
 
         setContent {
             WeatherMobileAppTheme {
@@ -39,7 +39,6 @@ class MainActivity : ComponentActivity() {
                 ) { innerPadding ->
                     AppNavHost(
                         modifier = Modifier.Companion.padding(innerPadding),
-                        weatherVM = viewModel
                     )
                 }
             }
