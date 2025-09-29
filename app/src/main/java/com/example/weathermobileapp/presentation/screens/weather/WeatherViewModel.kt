@@ -32,7 +32,7 @@ class WeatherViewModel(
 
     private fun getWeatherData() {
         viewModelScope.launch {
-            _state.value = _state.value.copy(isLoading = true)
+            _state.update { it.copy(isLoading = true) }
             locationTracker.getCurrentLocation()?.let { location ->
                 repository.getWeatherData(lat = location.latitude, location.longitude)
                     .collect { weatherRes ->
