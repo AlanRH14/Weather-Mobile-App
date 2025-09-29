@@ -48,9 +48,7 @@ fun TomorrowWeatherForecast(
             )
 
             TextButton(
-                onClick = {
-                    onEvent(WeatherUIEvent)
-                }
+                onClick = { onEvent(WeatherUIEvent.OnClickedNavigateToNextDaysForecast) }
             ) {
                 Text(
                     text = "Next day´s",
