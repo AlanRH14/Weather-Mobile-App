@@ -42,6 +42,7 @@ fun NextDaysForecastScreen(
     }
 
     state.forecast?.nextDayWeather?.let { nextDayWeather ->
+        var dayOfWeek = ""
         LazyColumn(
             modifier = modifier
                 .background(BackGroundColor)
@@ -50,13 +51,12 @@ fun NextDaysForecastScreen(
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
             items(items = nextDayWeather) { forecast ->
-                println("LordMiau Day: ${forecast.day}")
-                if (forecast.day != state.dayOfWeek) {
+                if (forecast.day != dayOfWeek) {
                     println("LordMiau Day2: ${forecast.day}")
                     getDayOfWeek[forecast.day]?.let { day ->
                         TitleDayOfWeekItem(day)
                     }
-                    forecastVM.onEvent(event = NextDaysForecastUIEvent.OnDayOfWeekUpdate(dayOfWeek = forecast.day))
+                    dayOfWeek = forecast.day
                 }
                 DailyWeatherItem(forecast)
             }
