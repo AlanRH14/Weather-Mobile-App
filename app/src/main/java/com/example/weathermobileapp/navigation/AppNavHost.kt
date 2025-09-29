@@ -13,7 +13,6 @@ import org.koin.androidx.compose.koinViewModel
 @Composable
 fun AppNavHost(
     modifier: Modifier = Modifier,
-    weatherVM: WeatherViewModel = koinViewModel()
 ) {
     val navController = rememberNavController()
 
