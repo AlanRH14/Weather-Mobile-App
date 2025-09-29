@@ -24,8 +24,9 @@ class WeatherViewModel(
     val effect = _effect.asSharedFlow()
 
     fun onEvent(event: WeatherUIEvent) {
-        when(event) {
+        when (event) {
             is WeatherUIEvent.OnGetWeather -> getWeatherData()
+            is WeatherUIEvent.OnGetWeatherForecast -> getWeatherForecastData()
         }
     }
 
