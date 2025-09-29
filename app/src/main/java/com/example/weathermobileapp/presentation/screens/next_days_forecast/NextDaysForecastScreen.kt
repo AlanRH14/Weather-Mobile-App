@@ -51,12 +51,12 @@ fun NextDaysForecastScreen(
         ) {
             items(items = nextDayWeather) { forecast ->
                 println("LordMiau Day: ${forecast.day}")
-                if (forecast.day != dayOfWeek) {
+                if (forecast.day != "") {
                     println("LordMiau Day2: ${forecast.day}")
                     getDayOfWeek[forecast.day]?.let { day ->
                         TitleDayOfWeekItem(day)
                     }
-                    dayOfWeek = forecast.day
+                    //dayOfWeek = forecast.day
                 }
                 DailyWeatherItem(forecast)
             }
