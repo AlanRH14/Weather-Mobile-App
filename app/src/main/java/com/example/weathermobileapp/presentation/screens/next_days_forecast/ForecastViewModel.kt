@@ -16,7 +16,6 @@ class ForecastViewModel(
     private val repository: WeatherRepository,
     private val locationTracker: LocationTracker,
 ) : ViewModel() {
-
     private val _state = MutableStateFlow(NextDaysForecastState())
     val state: StateFlow<NextDaysForecastState> get() = _state
 
