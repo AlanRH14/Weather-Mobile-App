@@ -45,6 +45,7 @@ fun WeatherScreen(
 
         if (fineLocationGranted && coarseLocationGranted) {
             weatherVM.onEvent(WeatherUIEvent.OnGetWeather)
+            weatherVM.onEvent(WeatherUIEvent.OnGetWeatherForecast)
         }
     }
 
