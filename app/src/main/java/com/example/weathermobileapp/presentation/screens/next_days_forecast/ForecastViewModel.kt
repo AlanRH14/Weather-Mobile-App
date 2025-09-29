@@ -23,6 +23,10 @@ class ForecastViewModel(
     private val _effect = MutableSharedFlow<NextDaysForecastEffect>()
     val effect = _effect.asSharedFlow()
 
+    fun onEvent(event: NextDaysForecastUIEvent) {
+
+    }
+
     fun getWeatherForecastData() {
         viewModelScope.launch {
             locationTracker.getCurrentLocation()?.let { location ->
