@@ -23,7 +23,6 @@ fun AppNavHost(
         composable(Screen.Weather.route) {
             WeatherScreen(
                 modifier = modifier,
-                weatherVM = weatherVM,
                 navController = navController
             )
         }
