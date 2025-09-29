@@ -1,5 +1,9 @@
 package com.example.weathermobileapp.presentation.screens.weather
 
+import android.Manifest.permission.ACCESS_COARSE_LOCATION
+import android.Manifest.permission.ACCESS_FINE_LOCATION
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -7,6 +11,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -21,6 +26,7 @@ import com.example.weathermobileapp.presentation.screens.error.ErrorMessageScree
 import com.example.weathermobileapp.presentation.widgets.shimmers.WeatherScreenShimmer
 import com.example.weathermobileapp.ui.theme.BackGroundColor
 import com.example.weathermobileapp.ui.theme.GenericPadding.ScreenPadding
+import kotlinx.coroutines.flow.collectLatest
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
@@ -30,6 +36,30 @@ fun WeatherScreen(
     navController: NavController,
 ) {
     val weatherData by weatherVM.state.collectAsStateWithLifecycle()
+    val permissionLauncher = rememberLauncherForActivityResult(
+        contract = ActivityResultContracts.RequestMultiplePermissions()
+    ) { permissions ->
+        val fineLocationGranted = permissions[ACCESS_FINE_LOCATION] ?: false
+        val coarseLocationGranted = permissions[ACCESS_COARSE_LOCATION] ?: false
+
+        if (fineLocationGranted && coarseLocationGranted) {
+            weatherVM.onEvent(WeatherUIEvent.OnGetWeather)
+            weatherVM.onEvent(WeatherUIEvent.OnGetWeatherForecast)
+        }
+    }
+
+    LaunchedEffect(key1 = true) {
+        permissionLauncher.launch(
+            arrayOf(ACCESS_FINE_LOCATION, ACCESS_COARSE_LOCATION)
+        )
+        weatherVM.effect.collectLatest { effect ->
+            when (effect) {
+                is WeatherEffect.NavigateToNextDaysForecast -> {
+                    navController.navigate(Screen.NextDaysForecast.route)
+                }
+            }
+        }
+    }
 
     if (weatherData.isLoading) {
         WeatherScreenShimmer(modifier = modifier)
@@ -54,9 +84,10 @@ fun WeatherScreen(
             weatherData.forecast?.let { forecast ->
                 HourlyWeatherForecast(forecast.todayWeather)
 
-                TomorrowWeatherForecast(forecast.tomorrowWeather) {
-                    navController.navigate(Screen.NextDaysForecast.route)
-                }
+                TomorrowWeatherForecast(
+                    forecastTomorrow = forecast.tomorrowWeather,
+                    onEvent = weatherVM::onEvent
+                )
             }
         }
     }

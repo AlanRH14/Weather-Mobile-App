@@ -7,13 +7,10 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.weathermobileapp.presentation.screens.next_days_forecast.NextDaysForecastScreen
 import com.example.weathermobileapp.presentation.screens.weather.WeatherScreen
-import com.example.weathermobileapp.presentation.screens.weather.WeatherViewModel
-import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun AppNavHost(
     modifier: Modifier = Modifier,
-    weatherVM: WeatherViewModel = koinViewModel()
 ) {
     val navController = rememberNavController()
 
@@ -24,7 +21,6 @@ fun AppNavHost(
         composable(Screen.Weather.route) {
             WeatherScreen(
                 modifier = modifier,
-                weatherVM = weatherVM,
                 navController = navController
             )
         }
