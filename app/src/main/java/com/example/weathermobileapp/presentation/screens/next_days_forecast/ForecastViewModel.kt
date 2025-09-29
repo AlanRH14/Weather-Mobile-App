@@ -5,6 +5,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.weathermobileapp.domain.ResultApi
 import com.example.weathermobileapp.domain.location.LocationTracker
 import com.example.weathermobileapp.domain.repository.WeatherRepository
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -29,7 +30,7 @@ class ForecastViewModel(
     }
 
     private fun getWeatherForecastData() {
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.IO) {
             locationTracker.getCurrentLocation()?.let { location ->
                 repository.getWeatherForecastData(lat = location.latitude, lon = location.longitude)
                     .collect { forecastData ->
