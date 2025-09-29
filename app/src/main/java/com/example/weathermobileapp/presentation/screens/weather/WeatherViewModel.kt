@@ -26,7 +26,7 @@ class WeatherViewModel(
         when (event) {
             is WeatherUIEvent.OnGetWeather -> getWeatherData()
             is WeatherUIEvent.OnGetWeatherForecast -> getWeatherForecastData()
-            is WeatherUIEvent.OnClickedNavigateToNextDaysForecast -> navigateToDaysForecast()
+            is WeatherUIEvent.OnClickedNavigateToNextDaysForecast -> navigateToNextDaysForecast()
         }
     }
 
@@ -103,7 +103,7 @@ class WeatherViewModel(
         }
     }
 
-    private fun navigateToDaysForecast() {
+    private fun navigateToNextDaysForecast() {
         viewModelScope.launch {
             _effect.emit(WeatherEffect.NavigateToNextDaysForecast)
         }
