@@ -23,7 +23,7 @@ class WeatherViewModel(
     private val _effect = MutableSharedFlow<WeatherEffect>()
     val effect = _effect.asSharedFlow()
 
-    fun onEvnet(event: WeatherUIEvent) {
+    fun onEvent(event: WeatherUIEvent) {
 
     }
 
