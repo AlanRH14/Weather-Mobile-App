@@ -16,7 +16,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import com.example.weathermobileapp.domain.models.DailyWeatherModel
 import com.example.weathermobileapp.presentation.components.items.DailyWeatherItem
-import com.example.weathermobileapp.presentation.screens.weather.WeatherUIEvent
+import com.example.weathermobileapp.presentation.screens.weather.mvi.WeatherUIEvent
 import com.example.weathermobileapp.ui.theme.DailyWeatherNextDays
 import com.example.weathermobileapp.ui.theme.DailyWeatherTitle
 import com.example.weathermobileapp.ui.theme.SmallPadding
