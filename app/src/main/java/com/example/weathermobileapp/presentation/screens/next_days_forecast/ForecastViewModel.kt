@@ -61,4 +61,8 @@ class ForecastViewModel(
             }
         }
     }
+
+    private fun dayOfWeekUpdate(dayOfWeek: String) {
+        _state.update { it.copy(dayOfWeek = dayOfWeek) }
+    }
 }
