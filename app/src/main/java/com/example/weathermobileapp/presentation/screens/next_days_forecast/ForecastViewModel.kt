@@ -23,7 +23,9 @@ class ForecastViewModel(
     val effect = _effect.asSharedFlow()
 
     fun onEvent(event: NextDaysForecastUIEvent) {
-
+        when (event) {
+            is NextDaysForecastUIEvent.OnGetWeatherForecastData -> getWeatherForecastData()
+        }
     }
 
     fun getWeatherForecastData() {
