@@ -49,7 +49,6 @@ fun NextDaysForecastScreen(
         ) {
             items(items = nextDayWeather) { forecast ->
                 if (forecast.day != dayOfWeek) {
-                    println("LordMiau Day2: ${forecast.day}")
                     getDayOfWeek[forecast.day]?.let { day ->
                         TitleDayOfWeekItem(day)
                     }
