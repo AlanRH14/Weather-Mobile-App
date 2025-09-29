@@ -26,6 +26,7 @@ class WeatherViewModel(
         when (event) {
             is WeatherUIEvent.OnGetWeather -> getWeatherData()
             is WeatherUIEvent.OnGetWeatherForecast -> getWeatherForecastData()
+            is WeatherUIEvent.OnClickedNavigateToNextDaysForecast ->
         }
     }
 
