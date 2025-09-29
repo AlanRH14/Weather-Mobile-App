@@ -1,5 +1,7 @@
 package com.example.weathermobileapp.presentation.screens.weather
 
+import android.Manifest.permission.ACCESS_COARSE_LOCATION
+import android.Manifest.permission.ACCESS_FINE_LOCATION
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.background
@@ -26,6 +28,7 @@ import com.example.weathermobileapp.ui.theme.BackGroundColor
 import com.example.weathermobileapp.ui.theme.GenericPadding.ScreenPadding
 import kotlinx.coroutines.flow.collectLatest
 import org.koin.androidx.compose.koinViewModel
+import java.util.jar.Manifest
 
 @Composable
 fun WeatherScreen(
@@ -37,12 +40,18 @@ fun WeatherScreen(
     val permissionLauncher = rememberLauncherForActivityResult(
         contract = ActivityResultContracts.RequestMultiplePermissions()
     ) { permissions ->
+        val fineLocationGranted = permissions[ACCESS_FINE_LOCATION] ?: false
+        val coarseLocationGranted = permissions[ACCESS_COARSE_LOCATION] ?: false
 
-
+        if (fineLocationGranted && coarseLocationGranted) {
+            weatherVM.onEvent(WeatherUIEvent.OnGetWeather)
+        }
     }
 
     LaunchedEffect(key1 = true) {
-        weatherVM.onEvent(WeatherUIEvent.OnGetWeather)
+        permissionLauncher.launch(
+            arrayOf(ACCESS_FINE_LOCATION, ACCESS_COARSE_LOCATION)
+        )
         weatherVM.effect.collectLatest {
 
         }
