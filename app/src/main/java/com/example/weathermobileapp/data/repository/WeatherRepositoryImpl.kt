@@ -31,7 +31,7 @@ class WeatherRepositoryImpl(
             }
         }
 
-    override suspend fun getWeatherForecastData(
+    override  fun getWeatherForecastData(
         lat: Double,
         lon: Double
     ): Flow<ResultApi<WeatherForecast>> =
