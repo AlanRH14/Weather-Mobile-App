@@ -4,6 +4,8 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
@@ -44,7 +46,7 @@ fun NextDaysForecastScreen(
     }
 
     state.forecast?.nextDayWeather?.let { nextDayWeather ->
-        Column(
+        LazyColumn(
             modifier = modifier
                 .background(BackGroundColor)
                 .fillMaxSize()
@@ -52,7 +54,8 @@ fun NextDaysForecastScreen(
                 .verticalScroll(rememberScrollState()),
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
-            nextDayWeather.forEach { forecast ->
+
+            items(items = nextDayWeather) { forecast ->
                 if (forecast.day != dayOfWeek) {
                     getDayOfWeek[forecast.day]?.let { day ->
                         TitleDayOfWeekItem(day)
