@@ -28,7 +28,6 @@ import com.example.weathermobileapp.ui.theme.BackGroundColor
 import com.example.weathermobileapp.ui.theme.GenericPadding.ScreenPadding
 import kotlinx.coroutines.flow.collectLatest
 import org.koin.androidx.compose.koinViewModel
-import java.util.jar.Manifest
 
 @Composable
 fun WeatherScreen(
