@@ -34,7 +34,7 @@ fun NextDaysForecastScreen(
     val state by forecastVM.state.collectAsStateWithLifecycle()
 
     LaunchedEffect(Unit) {
-        forecastVM.getWeatherForecastData()
+        forecastVM.onEvent(NextDaysForecastUIEvent.OnGetWeatherForecastData)
     }
 
     if (state.isLoading) {
