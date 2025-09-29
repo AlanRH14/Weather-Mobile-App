@@ -50,7 +50,6 @@ fun NextDaysForecastScreen(
                 .padding(ScreenPadding),
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
-
             items(items = nextDayWeather) { forecast ->
                 if (forecast.day != dayOfWeek) {
                     getDayOfWeek[forecast.day]?.let { day ->
