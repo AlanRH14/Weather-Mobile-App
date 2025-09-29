@@ -22,7 +22,8 @@ class MainActivity : ComponentActivity() {
                         .fillMaxSize()
                 ) { innerPadding ->
                     AppNavHost(
-                        modifier = Modifier.Companion.padding(innerPadding),
+                        modifier = Modifier
+                            .padding(innerPadding),
                     )
                 }
             }
