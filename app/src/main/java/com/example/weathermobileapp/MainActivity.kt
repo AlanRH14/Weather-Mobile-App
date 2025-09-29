@@ -17,9 +17,6 @@ import com.example.weathermobileapp.ui.theme.WeatherMobileAppTheme
 import org.koin.androidx.viewmodel.ext.android.getViewModel
 
 class MainActivity : ComponentActivity() {
-    private val viewModel: WeatherViewModel by lazy { getViewModel() }
-    private lateinit var permissionLauncher: ActivityResultLauncher<Array<String>>
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
