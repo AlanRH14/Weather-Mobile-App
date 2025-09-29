@@ -26,6 +26,7 @@ class ForecastViewModel(
     fun onEvent(event: NextDaysForecastUIEvent) {
         when (event) {
             is NextDaysForecastUIEvent.OnGetWeatherForecastData -> getWeatherForecastData()
+            is NextDaysForecastUIEvent.OnDayOfWeekUpdate -> dayOfWeekUpdate(dayOfWeek = event.dayOfWeek)
         }
     }
 
