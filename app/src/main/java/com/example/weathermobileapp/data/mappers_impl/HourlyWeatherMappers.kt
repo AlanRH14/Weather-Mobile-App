@@ -5,6 +5,7 @@ import com.example.weathermobileapp.domain.models.HourlyWeatherModel
 import com.example.weathermobileapp.domain.models.WeatherType
 import com.example.weathermobileapp.domain.utils.DatePatternKeys.HOUR
 import com.example.weathermobileapp.domain.utils.DateUtils.toCustomDateFormat
+import kotlin.math.roundToInt
 
 fun List<Forecast?>?.toHourlyWeathers(): List<HourlyWeatherModel> {
     return this?.filterNotNull()
@@ -13,7 +14,7 @@ fun List<Forecast?>?.toHourlyWeathers(): List<HourlyWeatherModel> {
                 HourlyWeatherModel(
                     image = WeatherType.fromId(weather.id).icon,
                     hour = forecast.dt.toCustomDateFormat(HOUR),
-                    degrees = "${Math.round(forecast.main?.temp ?: 0.0)}°"
+                    degrees = "${(forecast.main?.temp ?: 0.0).roundToInt()}°"
                 )
             }
         } ?: emptyList()
