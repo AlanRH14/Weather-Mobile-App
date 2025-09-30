@@ -29,7 +29,7 @@ fun WeatherDto.toWeatherModel(): WeatherModel {
             WeatherDataModel(
                 iconRes = R.drawable.ic_wind,
                 title = "Wind",
-                subtitle = "${Math.round(this.wind?.speed ?: 0.0)}Km/s"
+                subtitle = "${(this.wind?.speed ?: 0.0).roundToInt()}Km/s"
             ),
             WeatherDataModel(
                 iconRes = R.drawable.ic_drop,
