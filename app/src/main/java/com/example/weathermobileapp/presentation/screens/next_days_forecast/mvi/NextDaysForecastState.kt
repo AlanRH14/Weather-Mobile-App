@@ -1,4 +1,4 @@
-package com.example.weathermobileapp.presentation.screens.next_days_forecast
+package com.example.weathermobileapp.presentation.screens.next_days_forecast.mvi
 
 import com.example.weathermobileapp.domain.models.WeatherForecast
 
