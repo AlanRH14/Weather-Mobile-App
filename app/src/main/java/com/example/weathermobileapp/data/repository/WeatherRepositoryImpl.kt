@@ -1,14 +1,11 @@
 package com.example.weathermobileapp.data.repository
 
 import com.example.weathermobileapp.common.ApiMapper
-import com.example.weathermobileapp.data.mappers_impl.toForecastWeathers
-import com.example.weathermobileapp.data.mappers_impl.toWeatherModel
 import com.example.weathermobileapp.data.remote.api.ApiConfig.API_KEY
 import com.example.weathermobileapp.data.remote.api.WeatherApi
 import com.example.weathermobileapp.data.remote.dto.current.WeatherDto
 import com.example.weathermobileapp.data.remote.dto.forecast.Forecast
 import com.example.weathermobileapp.domain.ResultApi
-import com.example.weathermobileapp.domain.models.HourlyWeatherModel
 import com.example.weathermobileapp.domain.models.WeatherForecast
 import com.example.weathermobileapp.domain.models.WeatherModel
 import com.example.weathermobileapp.domain.repository.WeatherRepository
