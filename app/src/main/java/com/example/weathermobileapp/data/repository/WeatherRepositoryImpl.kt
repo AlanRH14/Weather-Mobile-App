@@ -26,11 +26,7 @@ class WeatherRepositoryImpl(
                     api.getWeatherCurrentData(lat = lat, lon = lon, id = API_KEY)
                 emit(ResultApi.Success(data = apiWeatherMapper.mapToDomain(dto = weatherData)))
             } catch (e: Exception) {
-                emit(
-                    ResultApi.Error(
-                        message = "Error: ${e.message}"
-                    )
-                )
+                emit(ResultApi.Error(message = "Error: ${e.message}"))
             }
         }
 
@@ -45,11 +41,7 @@ class WeatherRepositoryImpl(
                     api.getWeatherForecastData(lat = lat, lon = lon, id = API_KEY)
                 emit(ResultApi.Success(weatherForecastData.forecasts.toForecastWeathers()))
             } catch (e: Exception) {
-                emit(
-                    ResultApi.Error(
-                        message = "Error: ${e.message}"
-                    )
-                )
+                emit(ResultApi.Error(message = "Error: ${e.message}"))
             }
         }
 }
