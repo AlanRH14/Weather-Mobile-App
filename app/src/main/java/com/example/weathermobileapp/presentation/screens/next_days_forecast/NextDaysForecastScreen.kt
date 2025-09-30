@@ -39,7 +39,7 @@ fun NextDaysForecastScreen(
         forecastVM.onEvent(NextDaysForecastUIEvent.OnGetWeatherForecastData)
         forecastVM.effect.collectLatest { effect ->
             when (effect) {
-                is NextDaysForecastEffect.NavigateToBack -> {}
+                is NextDaysForecastEffect.NavigateToBack -> navController.popBackStack()
             }
         }
     }
