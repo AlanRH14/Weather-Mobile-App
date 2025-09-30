@@ -1,7 +1,6 @@
 package com.example.weathermobileapp.presentation.screens.next_days_forecast
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -35,9 +34,7 @@ import com.example.weathermobileapp.presentation.screens.next_days_forecast.mvi.
 import com.example.weathermobileapp.presentation.screens.next_days_forecast.mvi.NextDaysForecastUIEvent
 import com.example.weathermobileapp.presentation.widgets.shimmers.NextDaysForecastShimmer
 import com.example.weathermobileapp.ui.theme.BackGroundColor
-import com.example.weathermobileapp.ui.theme.GenericPadding.ScreenPadding
 import com.example.weathermobileapp.ui.theme.MediumPadding
-import com.example.weathermobileapp.ui.theme.SmallPadding
 import kotlinx.coroutines.flow.collectLatest
 import org.koin.androidx.compose.koinViewModel
 
