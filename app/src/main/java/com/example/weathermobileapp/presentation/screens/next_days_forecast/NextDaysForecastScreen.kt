@@ -1,6 +1,7 @@
 package com.example.weathermobileapp.presentation.screens.next_days_forecast
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
@@ -51,14 +52,15 @@ fun NextDaysForecastScreen(
     }
 
     state.forecast?.nextDayWeather?.let { nextDayWeather ->
-        LazyColumn(
+        Column(
             modifier = modifier
                 .background(BackGroundColor)
                 .fillMaxSize()
                 .padding(ScreenPadding),
+            c
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
-            items(items = nextDayWeather) { forecast ->
+            nextDayWeather.forEach { forecast ->
                 if (forecast.day != dayOfWeek) {
                     getDayOfWeek[forecast.day]?.let { day ->
                         TitleDayOfWeekItem(day)
