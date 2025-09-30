@@ -1,8 +1,10 @@
 package com.example.weathermobileapp.presentation.screens.next_days_forecast
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
@@ -12,6 +14,7 @@ import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -30,7 +33,6 @@ import com.example.weathermobileapp.presentation.components.items.TitleDayOfWeek
 import com.example.weathermobileapp.presentation.screens.error.ErrorMessageScreen
 import com.example.weathermobileapp.presentation.widgets.shimmers.NextDaysForecastShimmer
 import com.example.weathermobileapp.ui.theme.BackGroundColor
-import com.example.weathermobileapp.ui.theme.GenericPadding.ScreenPadding
 import kotlinx.coroutines.flow.collectLatest
 import org.koin.androidx.compose.koinViewModel
 
@@ -59,17 +61,13 @@ fun NextDaysForecastScreen(
         )
     }
 
-    state.forecast?.nextDayWeather?.let { nextDayWeather ->
-        Column(
-            modifier = modifier
-                .background(BackGroundColor)
-                .fillMaxSize()
-                .padding(ScreenPadding)
-                .verticalScroll(rememberScrollState()),
-            horizontalAlignment = Alignment.CenterHorizontally,
-        ) {
+    Scaffold(
+        modifier = modifier
+            .background(BackGroundColor)
+            .fillMaxSize(),
+        topBar = {
             TopAppBar(
-                title = { },
+                title = {},
                 navigationIcon = {
                     IconButton(
                         onClick = { forecastVM.onEvent(event = NextDaysForecastUIEvent.OnNavigateToBack) }
@@ -81,14 +79,25 @@ fun NextDaysForecastScreen(
                     }
                 }
             )
-            nextDayWeather.forEach { forecast ->
-                if (forecast.day != dayOfWeek) {
-                    getDayOfWeek[forecast.day]?.let { day ->
-                        TitleDayOfWeekItem(day)
+        }
+    ) { innerPadding ->
+        state.forecast?.nextDayWeather?.let { nextDayWeather ->
+            Column(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(innerPadding)
+                    .verticalScroll(rememberScrollState()),
+                horizontalAlignment = Alignment.CenterHorizontally,
+            ) {
+                nextDayWeather.forEach { forecast ->
+                    if (forecast.day != dayOfWeek) {
+                        getDayOfWeek[forecast.day]?.let { day ->
+                            TitleDayOfWeekItem(day)
+                        }
+                        dayOfWeek = forecast.day
                     }
-                    dayOfWeek = forecast.day
+                    DailyWeatherItem(forecast)
                 }
-                DailyWeatherItem(forecast)
             }
         }
     }
