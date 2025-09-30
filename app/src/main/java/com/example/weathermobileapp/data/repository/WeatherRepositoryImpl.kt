@@ -1,9 +1,11 @@
 package com.example.weathermobileapp.data.repository
 
+import com.example.weathermobileapp.common.ApiMapper
 import com.example.weathermobileapp.data.mappers_impl.toForecastWeathers
 import com.example.weathermobileapp.data.mappers_impl.toWeatherModel
 import com.example.weathermobileapp.data.remote.api.ApiConfig.API_KEY
 import com.example.weathermobileapp.data.remote.api.WeatherApi
+import com.example.weathermobileapp.data.remote.dto.current.WeatherDto
 import com.example.weathermobileapp.domain.ResultApi
 import com.example.weathermobileapp.domain.models.WeatherForecast
 import com.example.weathermobileapp.domain.models.WeatherModel
@@ -13,6 +15,7 @@ import kotlinx.coroutines.flow.flow
 
 class WeatherRepositoryImpl(
     private val api: WeatherApi,
+    private val apiWeatherMapper: ApiMapper<WeatherDto, WeatherModel>
 ) : WeatherRepository {
 
     override fun getWeatherData(lat: Double, lon: Double): Flow<ResultApi<WeatherModel>> =
@@ -21,7 +24,7 @@ class WeatherRepositoryImpl(
             try {
                 val weatherData =
                     api.getWeatherCurrentData(lat = lat, lon = lon, id = API_KEY)
-                emit(ResultApi.Success(data = weatherData.toWeatherModel()))
+                emit(ResultApi.Success(data = apiWeatherMapper.mapToDomain(dto = weatherData)))
             } catch (e: Exception) {
                 emit(
                     ResultApi.Error(
@@ -31,19 +34,22 @@ class WeatherRepositoryImpl(
             }
         }
 
-    override  fun getWeatherForecastData(
+    override fun getWeatherForecastData(
         lat: Double,
         lon: Double
     ): Flow<ResultApi<WeatherForecast>> =
         flow {
             emit(ResultApi.Loading)
             try {
-                val weatherForecastData = api.getWeatherForecastData(lat = lat, lon = lon, id = API_KEY)
+                val weatherForecastData =
+                    api.getWeatherForecastData(lat = lat, lon = lon, id = API_KEY)
                 emit(ResultApi.Success(weatherForecastData.forecasts.toForecastWeathers()))
             } catch (e: Exception) {
-                emit(ResultApi.Error(
-                    message = "Error: ${e.message}"
-                ))
+                emit(
+                    ResultApi.Error(
+                        message = "Error: ${e.message}"
+                    )
+                )
             }
         }
 }
