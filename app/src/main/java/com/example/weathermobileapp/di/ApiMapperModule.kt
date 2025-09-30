@@ -11,25 +11,26 @@ import com.example.weathermobileapp.domain.models.DailyWeatherModel
 import com.example.weathermobileapp.domain.models.HourlyWeatherModel
 import com.example.weathermobileapp.domain.models.WeatherForecast
 import com.example.weathermobileapp.domain.models.WeatherModel
+import org.koin.core.qualifier.named
 import org.koin.dsl.module
 
 val apiMapperModule = module {
-    single<ApiMapper<List<Forecast?>?, List<DailyWeatherModel>>> {
+    single<ApiMapper<List<Forecast?>?, List<DailyWeatherModel>>>(named("DailyWeatherMapper")) {
         DailyWeatherMapperImpl()
     }
 
     single<ApiMapper<List<Forecast?>?, WeatherForecast>> {
         ForecastMapperImpl(
-            apiDailyWeatherMapper = get(),
-            apiHourlyWeathersMapper = get()
+            apiDailyWeatherMapper = get(named("DailyWeatherMapper")),
+            apiHourlyWeathersMapper = get(named("HourlyWeatherMapper"))
         )
     }
 
-    single<ApiMapper<List<Forecast?>?, List<HourlyWeatherModel>>> {
+    single<ApiMapper<List<Forecast?>?, List<HourlyWeatherModel>>>(named("HourlyWeatherMapper")) {
         HourlyWeatherMapperImpl()
     }
 
-    single<ApiMapper<WeatherDto,  WeatherModel>> {
+    single<ApiMapper<WeatherDto, WeatherModel>> {
         WeatherMapperImpl()
     }
 }
