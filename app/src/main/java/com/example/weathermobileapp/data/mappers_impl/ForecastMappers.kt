@@ -16,19 +16,7 @@ class ForecastMapperImpl(
         return WeatherForecast(
             todayWeather = dto?.filter { forecast -> forecast?.dt.isToday() }.toHourlyWeathers(),
             tomorrowWeather = apiDailyWeatherMapper.mapToDomain(dto = dto?.filter { forecast -> forecast?.dt.isTomorrow() }),
-            nextDayWeather = forecast.dt.isNextDays()
+            nextDayWeather = apiDailyWeatherMapper.mapToDomain(dto = dto?.filter { forecast -> forecast?.dt.isNextDays() })
         )
     }
 }
-fun List<Forecast?>?.toForecastWeathers(): WeatherForecast {
-    return WeatherForecast(
-        todayWeather = this?.filter { forecast -> forecast?.dt.isToday() }
-            .toHourlyWeathers(),
-        tomorrowWeather = this?.filter { forecast -> forecast?.dt.isTomorrow() }
-            .toDailyWeathers(),
-        nextDayWeather = this?.filter { forecast -> forecast?.dt.isNextDays() }
-            .toDailyWeathers()
-    )
-}
-
-
