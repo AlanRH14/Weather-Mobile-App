@@ -1,7 +1,7 @@
 package com.example.weathermobileapp.domain
 
-sealed class ResultApi<out T> {
-    data object Loading: ResultApi<Nothing>()
-    class Success<T>(val data: T?): ResultApi<T>()
-    class Error(val message: String): ResultApi<Nothing>()
+sealed interface ResultApi<out T> {
+    data object Loading: ResultApi<Nothing>
+    data class Success<T>(val data: T?): ResultApi<T>
+    data class Error<T>(val message: String): ResultApi<T>
 }

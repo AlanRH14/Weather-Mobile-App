@@ -5,6 +5,9 @@ import androidx.lifecycle.viewModelScope
 import com.example.weathermobileapp.domain.ResultApi
 import com.example.weathermobileapp.domain.location.LocationTracker
 import com.example.weathermobileapp.domain.repository.WeatherRepository
+import com.example.weathermobileapp.presentation.screens.next_days_forecast.mvi.NextDaysForecastEffect
+import com.example.weathermobileapp.presentation.screens.next_days_forecast.mvi.NextDaysForecastState
+import com.example.weathermobileapp.presentation.screens.next_days_forecast.mvi.NextDaysForecastUIEvent
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -27,6 +30,7 @@ class ForecastViewModel(
         when (event) {
             is NextDaysForecastUIEvent.OnGetWeatherForecastData -> getWeatherForecastData()
             is NextDaysForecastUIEvent.OnDayOfWeekUpdate -> dayOfWeekUpdate(dayOfWeek = event.dayOfWeek)
+            is NextDaysForecastUIEvent.OnNavigateToBack -> navigateToBack()
         }
     }
 
@@ -65,5 +69,11 @@ class ForecastViewModel(
 
     private fun dayOfWeekUpdate(dayOfWeek: String) {
         _state.update { it.copy(dayOfWeek = dayOfWeek) }
+    }
+
+    private fun navigateToBack() {
+        viewModelScope.launch {
+            _effect.emit(NextDaysForecastEffect.NavigateToBack)
+        }
     }
 }

@@ -1,4 +1,4 @@
-package com.example.weathermobileapp.data.mappers
+package com.example.weathermobileapp.data.mappers_impl
 
 object DayOfWeekMapper {
     val getDayOfWeek = hashMapOf(

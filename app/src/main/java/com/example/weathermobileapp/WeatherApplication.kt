@@ -1,6 +1,7 @@
 package com.example.weathermobileapp
 
 import android.app.Application
+import com.example.weathermobileapp.di.apiMapperModule
 import com.example.weathermobileapp.di.appModule
 import com.example.weathermobileapp.di.locationModule
 import com.example.weathermobileapp.di.networkModule
@@ -19,6 +20,7 @@ class WeatherApplication : Application() {
             androidLogger(Level.DEBUG)
             modules(
                 networkModule,
+                apiMapperModule,
                 repositoryModule,
                 locationModule,
                 appModule,
