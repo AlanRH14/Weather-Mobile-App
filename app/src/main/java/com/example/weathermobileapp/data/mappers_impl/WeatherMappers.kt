@@ -9,6 +9,7 @@ import com.example.weathermobileapp.domain.models.WeatherModel
 import com.example.weathermobileapp.domain.models.WeatherType
 import com.example.weathermobileapp.domain.utils.DatePatternKeys.DATE_HOUR
 import com.example.weathermobileapp.domain.utils.DateUtils.toCustomDateFormat
+import kotlin.math.roundToInt
 
 fun WeatherDto.toWeatherModel(): WeatherModel {
     return WeatherModel(
@@ -16,7 +17,7 @@ fun WeatherDto.toWeatherModel(): WeatherModel {
         locationData = WeatherLocationModel(
             city = "${this.name}",
             date = this.dt.toCustomDateFormat(DATE_HOUR),
-            degree = "${Math.round(this.main?.temp ?: 0.0)}°",
+            degree = "${(this.main?.temp ?: 0.0).roundToInt()}°",
             description = "${this.weather?.first()?.description}"
         ),
         weatherData = listOf(
