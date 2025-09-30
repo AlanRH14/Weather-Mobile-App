@@ -19,18 +19,18 @@ val apiMapperModule = module {
         DailyWeatherMapperImpl()
     }
 
-    single<ApiMapper<List<Forecast?>?, WeatherForecast>> {
-        ForecastMapperImpl(
-            apiDailyWeatherMapper = get(named("DailyWeatherMapper")),
-            apiHourlyWeathersMapper = get(named("HourlyWeatherMapper"))
-        )
-    }
-
     single<ApiMapper<List<Forecast?>?, List<HourlyWeatherModel>>>(named("HourlyWeatherMapper")) {
         HourlyWeatherMapperImpl()
     }
 
     single<ApiMapper<WeatherDto, WeatherModel>> {
         WeatherMapperImpl()
+    }
+
+    single<ApiMapper<List<Forecast?>?, WeatherForecast>> {
+        ForecastMapperImpl(
+            apiDailyWeatherMapper = get(named("DailyWeatherMapper")),
+            apiHourlyWeathersMapper = get(named("HourlyWeatherMapper"))
+        )
     }
 }
