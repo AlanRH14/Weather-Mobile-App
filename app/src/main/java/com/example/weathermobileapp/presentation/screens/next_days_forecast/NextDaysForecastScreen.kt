@@ -8,6 +8,9 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -26,6 +29,7 @@ fun NextDaysForecastScreen(
     modifier: Modifier = Modifier,
     forecastVM: ForecastViewModel = koinViewModel(),
 ) {
+    var dayOfWeek by remember { mutableStateOf("") }
     val state by forecastVM.state.collectAsStateWithLifecycle()
 
     LaunchedEffect(key1 = true) {
@@ -39,7 +43,6 @@ fun NextDaysForecastScreen(
     }
 
     state.forecast?.nextDayWeather?.let { nextDayWeather ->
-        var dayOfWeek = ""
         LazyColumn(
             modifier = modifier
                 .background(BackGroundColor)
