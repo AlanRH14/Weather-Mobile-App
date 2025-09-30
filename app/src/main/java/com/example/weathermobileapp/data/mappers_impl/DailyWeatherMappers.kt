@@ -17,8 +17,8 @@ class DailyWeatherMapperImpl : ApiMapper<List<Forecast?>?, List<DailyWeatherMode
                     DailyWeatherModel(
                         day = forecast.dt.toCustomDateFormat(pattern = WEEKDAY),
                         image = WeatherType.fromId(code = weather.id).icon,
-                        lowTemp = "${(forecast.main?.tempMin ?: 0.0).roundToInt()}",
-                        highTemp = ""
+                        lowTemp = "${(forecast.main?.tempMin ?: 0.0).roundToInt()}°",
+                        highTemp = "${(forecast.main?.tempMax ?: 0.0).roundToInt()}°"
                     )
                 }
             } ?: emptyList()
