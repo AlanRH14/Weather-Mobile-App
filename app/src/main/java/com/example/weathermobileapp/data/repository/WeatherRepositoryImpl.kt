@@ -1,7 +1,7 @@
 package com.example.weathermobileapp.data.repository
 
-import com.example.weathermobileapp.data.mappers.toForecastWeathers
-import com.example.weathermobileapp.data.mappers.toWeatherModel
+import com.example.weathermobileapp.data.mappers_impl.toForecastWeathers
+import com.example.weathermobileapp.data.mappers_impl.toWeatherModel
 import com.example.weathermobileapp.data.remote.api.ApiConfig.API_KEY
 import com.example.weathermobileapp.data.remote.api.WeatherApi
 import com.example.weathermobileapp.domain.ResultApi

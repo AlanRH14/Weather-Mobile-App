@@ -1,4 +1,4 @@
-package com.example.weathermobileapp.data.mappers
+package com.example.weathermobileapp.data.mappers_impl
 
 import com.example.weathermobileapp.data.remote.dto.forecast.Forecast
 import com.example.weathermobileapp.domain.models.HourlyWeatherModel

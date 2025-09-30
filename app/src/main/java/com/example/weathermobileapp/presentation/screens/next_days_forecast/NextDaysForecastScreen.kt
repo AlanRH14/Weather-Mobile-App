@@ -26,7 +26,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavHostController
 import com.example.weathermobileapp.data.local.mockdata.WeatherMockData.ErrorMock
-import com.example.weathermobileapp.data.mappers.DayOfWeekMapper.getDayOfWeek
+import com.example.weathermobileapp.data.mappers_impl.DayOfWeekMapper.getDayOfWeek
 import com.example.weathermobileapp.presentation.components.items.DailyWeatherItem
 import com.example.weathermobileapp.presentation.components.items.TitleDayOfWeekItem
 import com.example.weathermobileapp.presentation.screens.error.ErrorMessageScreen

@@ -1,4 +1,4 @@
-package com.example.weathermobileapp.data.mappers
+package com.example.weathermobileapp.data.mappers_impl
 
 import com.example.weathermobileapp.R
 import com.example.weathermobileapp.data.local.mockdata.WeatherMockData.WeatherData
