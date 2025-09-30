@@ -6,6 +6,9 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -27,6 +30,7 @@ import com.example.weathermobileapp.ui.theme.GenericPadding.ScreenPadding
 import kotlinx.coroutines.flow.collectLatest
 import org.koin.androidx.compose.koinViewModel
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun NextDaysForecastScreen(
     modifier: Modifier = Modifier,
@@ -60,6 +64,16 @@ fun NextDaysForecastScreen(
                 .verticalScroll(rememberScrollState()),
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
+            TopAppBar(
+                title = { },
+                navigationIcon = {
+                    IconButton(
+                        onClick = { forecastVM.onEvent(event = NextDaysForecastUIEvent.NavigateToBack) }
+                    ) {
+
+                    }
+                }
+            )
             nextDayWeather.forEach { forecast ->
                 if (forecast.day != dayOfWeek) {
                     getDayOfWeek[forecast.day]?.let { day ->
