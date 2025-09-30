@@ -7,6 +7,7 @@ import com.example.weathermobileapp.domain.location.LocationTracker
 import com.example.weathermobileapp.domain.repository.WeatherRepository
 import com.example.weathermobileapp.presentation.screens.next_days_forecast.mvi.NextDaysForecastEffect
 import com.example.weathermobileapp.presentation.screens.next_days_forecast.mvi.NextDaysForecastState
+import com.example.weathermobileapp.presentation.screens.next_days_forecast.mvi.NextDaysForecastUIEvent
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
