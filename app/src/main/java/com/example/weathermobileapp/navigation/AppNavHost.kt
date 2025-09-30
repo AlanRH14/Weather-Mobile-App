@@ -27,7 +27,8 @@ fun AppNavHost(
 
         composable(Screen.NextDaysForecast.route) {
             NextDaysForecastScreen(
-                modifier = modifier
+                modifier = modifier,
+                navController = navController
             )
         }
     }
