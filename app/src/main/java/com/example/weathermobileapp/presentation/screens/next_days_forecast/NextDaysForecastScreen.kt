@@ -16,6 +16,8 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.TopAppBarDefaults
+import androidx.compose.material3.contentColorFor
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -24,6 +26,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavHostController
 import com.example.weathermobileapp.data.local.mockdata.WeatherMockData.ErrorMock
@@ -33,6 +36,9 @@ import com.example.weathermobileapp.presentation.components.items.TitleDayOfWeek
 import com.example.weathermobileapp.presentation.screens.error.ErrorMessageScreen
 import com.example.weathermobileapp.presentation.widgets.shimmers.NextDaysForecastShimmer
 import com.example.weathermobileapp.ui.theme.BackGroundColor
+import com.example.weathermobileapp.ui.theme.GenericPadding.ScreenPadding
+import com.example.weathermobileapp.ui.theme.MediumPadding
+import com.example.weathermobileapp.ui.theme.SmallPadding
 import kotlinx.coroutines.flow.collectLatest
 import org.koin.androidx.compose.koinViewModel
 
@@ -62,9 +68,11 @@ fun NextDaysForecastScreen(
     }
 
     Scaffold(
-        modifier = modifier
+        modifier = Modifier
             .background(BackGroundColor)
             .fillMaxSize(),
+        contentColor = Color.Transparent,
+        containerColor = Color.Transparent,
         topBar = {
             TopAppBar(
                 title = {},
@@ -77,15 +85,19 @@ fun NextDaysForecastScreen(
                             contentDescription = ""
                         )
                     }
-                }
+                },
+                colors = TopAppBarDefaults.topAppBarColors(
+                    containerColor = Color.Transparent
+                )
             )
-        }
+        },
     ) { innerPadding ->
         state.forecast?.nextDayWeather?.let { nextDayWeather ->
             Column(
                 modifier = Modifier
                     .fillMaxSize()
                     .padding(innerPadding)
+                    .padding(horizontal = MediumPadding)
                     .verticalScroll(rememberScrollState()),
                 horizontalAlignment = Alignment.CenterHorizontally,
             ) {
