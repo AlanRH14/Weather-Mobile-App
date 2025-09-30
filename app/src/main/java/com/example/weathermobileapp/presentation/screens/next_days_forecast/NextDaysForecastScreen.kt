@@ -22,6 +22,7 @@ import com.example.weathermobileapp.presentation.screens.error.ErrorMessageScree
 import com.example.weathermobileapp.presentation.widgets.shimmers.NextDaysForecastShimmer
 import com.example.weathermobileapp.ui.theme.BackGroundColor
 import com.example.weathermobileapp.ui.theme.GenericPadding.ScreenPadding
+import kotlinx.coroutines.flow.collectLatest
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
@@ -34,6 +35,11 @@ fun NextDaysForecastScreen(
 
     LaunchedEffect(key1 = true) {
         forecastVM.onEvent(NextDaysForecastUIEvent.OnGetWeatherForecastData)
+        forecastVM.effect.collectLatest { effect ->
+            when (effect) {
+                is NextDaysForecastEffect.NavigateToBack -> {}
+            }
+        }
     }
 
     if (state.isLoading) {
