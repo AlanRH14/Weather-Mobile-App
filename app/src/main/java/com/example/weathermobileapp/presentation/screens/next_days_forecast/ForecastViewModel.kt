@@ -28,7 +28,7 @@ class ForecastViewModel(
         when (event) {
             is NextDaysForecastUIEvent.OnGetWeatherForecastData -> getWeatherForecastData()
             is NextDaysForecastUIEvent.OnDayOfWeekUpdate -> dayOfWeekUpdate(dayOfWeek = event.dayOfWeek)
-            is NextDaysForecastUIEvent.OnNavigateToBack ->
+            is NextDaysForecastUIEvent.OnNavigateToBack -> navigateToBack()
         }
     }
 
