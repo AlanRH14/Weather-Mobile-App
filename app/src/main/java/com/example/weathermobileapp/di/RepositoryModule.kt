@@ -5,5 +5,11 @@ import com.example.weathermobileapp.domain.repository.WeatherRepository
 import org.koin.dsl.module
 
 val repositoryModule = module {
-    single<WeatherRepository> { WeatherRepositoryImpl(api = get()) }
+    single<WeatherRepository> {
+        WeatherRepositoryImpl(
+            api = get(),
+            apiWeatherMapper = get(),
+            apiForecastMapper = get()
+        )
+    }
 }
