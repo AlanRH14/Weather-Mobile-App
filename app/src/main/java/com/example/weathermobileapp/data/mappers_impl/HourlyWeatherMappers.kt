@@ -17,7 +17,7 @@ class HourlyWeatherMapperImpl : ApiMapper<List<Forecast?>?, List<HourlyWeatherMo
                     HourlyWeatherModel(
                         image = WeatherType.fromId(weather.id).icon,
                         hour = forecast.dt.toCustomDateFormat(pattern = HOUR),
-                        degrees = "${(forecast.main?.temp ?: 0.0).roundToInt()}"
+                        degrees = "${(forecast.main?.temp ?: 0.0).roundToInt()}°"
                     )
                 }
             } ?: emptyList()
