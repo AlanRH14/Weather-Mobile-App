@@ -9,8 +9,8 @@ val repositoryModule = module {
     single<WeatherRepository> {
         WeatherRepositoryImpl(
             api = get(),
-            apiWeatherMapper = get(named("DailyWeatherMapper")),
-            apiForecastMapper = get(named("HourlyWeatherMapper"))
+            apiWeatherMapper = get(named("WeatherMapper")),
+            apiForecastMapper = get(named("ForecastMapper"))
         )
     }
 }
