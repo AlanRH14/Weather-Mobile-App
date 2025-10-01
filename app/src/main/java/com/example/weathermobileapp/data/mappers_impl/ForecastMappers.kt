@@ -16,9 +16,9 @@ class ForecastMapperImpl(
 
     override fun mapToDomain(dto: List<Forecast?>?): WeatherForecast {
         return WeatherForecast(
-            todayWeather = apiHourlyWeathersMapper.mapToDomain(dto = dto?.filter { forecast -> forecast?.dt.isToday() }),
-            tomorrowWeather = apiDailyWeatherMapper.mapToDomain(dto = dto?.filter { forecast -> forecast?.dt.isTomorrow() }),
-            nextDayWeather = apiDailyWeatherMapper.mapToDomain(dto = dto?.filter { forecast -> forecast?.dt.isNextDays() })
+            todayWeather = emptyList(),
+            tomorrowWeather = emptyList(),
+            nextDayWeather = emptyList()
         )
     }
 }
