@@ -15,7 +15,7 @@ import org.koin.core.qualifier.named
 import org.koin.dsl.module
 
 val apiMapperModule = module {
-    single<ApiMapper<List<Forecast?>?, List<DailyWeatherModel>>>(named("DailyWeatherMapper")) {
+    single<ApiMapper<List<Forecast?>?, List<DailyWeatherModel>>> {
         DailyWeatherMapperImpl()
     }
 
@@ -23,13 +23,13 @@ val apiMapperModule = module {
         HourlyWeatherMapperImpl()
     }
 
-    single<ApiMapper<WeatherDto, WeatherModel>> {
+    single<ApiMapper<WeatherDto, WeatherModel>>(named("WeatherMapper")) {
         WeatherMapperImpl()
     }
 
     single<ApiMapper<List<Forecast?>?, WeatherForecast>> {
         ForecastMapperImpl(
-            apiDailyWeatherMapper = get(named("DailyWeatherMapper")),
+            apiDailyWeatherMapper = get(named("WeatherMapper")),
             apiHourlyWeathersMapper = get(named("HourlyWeatherMapper"))
         )
     }
