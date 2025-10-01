@@ -30,8 +30,6 @@ class WeatherRepositoryImpl(
             } catch (e: Exception) {
                 emit(ResultApi.Error(message = "Error: ${e.message}"))
             }
-        }.catch {
-            Log.d("LordMiau", "Error: ${it.message}")
         }
 
     override fun getWeatherForecastData(
@@ -47,7 +45,5 @@ class WeatherRepositoryImpl(
             } catch (e: Exception) {
                 emit(ResultApi.Error(message = "Error: ${e.message}"))
             }
-        }.catch {
-            Log.d("LordMiau", "Error: ${it.message}")
         }
 }
