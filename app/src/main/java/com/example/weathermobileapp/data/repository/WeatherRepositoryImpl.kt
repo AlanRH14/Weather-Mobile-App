@@ -1,6 +1,5 @@
 package com.example.weathermobileapp.data.repository
 
-import android.util.Log
 import com.example.weathermobileapp.common.ApiMapper
 import com.example.weathermobileapp.data.remote.api.ApiConfig.API_KEY
 import com.example.weathermobileapp.data.remote.api.WeatherApi
@@ -11,7 +10,6 @@ import com.example.weathermobileapp.domain.models.WeatherForecast
 import com.example.weathermobileapp.domain.models.WeatherModel
 import com.example.weathermobileapp.domain.repository.WeatherRepository
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flow
 
 class WeatherRepositoryImpl(
