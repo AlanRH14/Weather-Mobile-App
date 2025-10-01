@@ -18,7 +18,10 @@ class WeatherRepositoryImpl(
     private val apiForecastMapper: ApiMapper<List<Forecast?>?, WeatherForecast>
 ) : WeatherRepository {
 
-    override fun getWeatherData(lat: Double, lon: Double): Flow<ResultApi<WeatherModel>> =
+    override fun getWeatherData(
+        lat: Double,
+        lon: Double
+    ): Flow<ResultApi<WeatherModel>> =
         flow {
             emit(ResultApi.Loading)
             try {

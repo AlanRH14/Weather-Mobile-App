@@ -19,8 +19,8 @@ class WeatherApplication : Application() {
             androidContext(this@WeatherApplication)
             androidLogger(Level.DEBUG)
             modules(
-                networkModule,
                 apiMapperModule,
+                networkModule,
                 repositoryModule,
                 locationModule,
                 appModule,
